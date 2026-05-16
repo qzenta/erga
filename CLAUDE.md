@@ -8,7 +8,9 @@ Greenfield website build for **Erga Concepts (Pty) Ltd**, trading as **Erga Prop
 This is a **separate project** from Sikatrix.com (which lives at `C:\Users\Daniel\Sikatrix-Dev`). Do not cross-reference code, assets, or conventions between the two — they are unrelated businesses.
 
 ## Location
-`C:\Users\Daniel\Erga-Dev` (git repo auto-initialized by `create-next-app`, no remote yet)
+`C:\Users\Daniel\Documents\erga`
+- GitHub: `github.com/onukpad/erga-properties` (private)
+- Vercel project: `erga-properties` (daniels-projects-bc877f22)
 
 ## Stack
 - **Next.js 15** (App Router)
@@ -33,7 +35,7 @@ Define these as Tailwind theme tokens (e.g. `navy`, `gold`) so they are used con
 
 ## Dev workflow
 ```
-cd /c/Users/Daniel/Erga-Dev
+cd C:\Users\Daniel\Documents\erga
 npm run dev        # start dev server
 npm run build      # production build
 npm run lint       # ESLint
@@ -46,4 +48,4 @@ npm run lint       # ESLint
 
 ## Constraints
 - Never commit secrets, API keys, or `.env*` files
-- Do not touch `C:\Users\Daniel\Sikatrix-Dev` from this project — it is a live WordPress mirror for an unrelated business
+- Sikatrix lives at `C:\Users\Daniel\Documents\sikatrix` — separate business, do not cross-reference
