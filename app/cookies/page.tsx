@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function CookiesPage() {
   return (
     <>
-      <PageBanner title="Cookie Policy" />
+      <PageBanner title="Cookie Policy" breadcrumbs={[{ label: "Cookie Policy" }]} />
 
       <section className="bg-white">
         <div className="mx-auto max-w-3xl px-6 py-20">

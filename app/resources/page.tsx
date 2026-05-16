@@ -69,7 +69,13 @@ const articles: Article[] = [
 export default function ResourcesPage() {
   return (
     <>
-      <PageBanner title="Resources & Insights" />
+      <PageBanner
+        title="Resources & Insights"
+        subtitle="Practical guides and articles for property owners and tenants in South Africa."
+        image="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1600&q=80&auto=format&fit=crop"
+        imageAlt="Professional working at desk with documents"
+        breadcrumbs={[{ label: "Resources" }]}
+      />
 
       <section className="bg-white">
         <div className="mx-auto max-w-6xl px-6 py-20">

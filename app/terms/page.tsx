@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function TermsPage() {
   return (
     <>
-      <PageBanner title="Terms & Conditions" />
+      <PageBanner title="Terms & Conditions" breadcrumbs={[{ label: "Terms & Conditions" }]} />
 
       <section className="bg-white">
         <div className="mx-auto max-w-3xl px-6 py-20">

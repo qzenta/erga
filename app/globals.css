@@ -3,11 +3,14 @@
 @theme {
   --color-navy: #1B2A4A;
   --color-gold: #9A7B2F;
+  --color-gold-light: #c2a14d;
+  --color-cream: #F9F7F3;
+  --color-charcoal: #2D3748;
   --color-background: #FFFFFF;
   --color-foreground: #1B2A4A;
 
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-playfair), ui-serif, Georgia, serif;
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-serif), ui-serif, Georgia, serif;
 }
 
 html,
@@ -20,11 +23,14 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+  line-height: 1.7;
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4, h5 {
   font-family: var(--font-serif);
   letter-spacing: -0.01em;
+  line-height: 1.15;
 }
 
 @keyframes marquee {
@@ -40,3 +46,16 @@ h1, h2, h3, h4 {
 .marquee-wrapper:hover .marquee-track {
   animation-play-state: paused;
 }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.7s ease both;
+}
+
+.animate-delay-100 { animation-delay: 0.1s; }
+.animate-delay-200 { animation-delay: 0.2s; }
+.animate-delay-300 { animation-delay: 0.3s; }

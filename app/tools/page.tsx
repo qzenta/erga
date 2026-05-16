@@ -49,7 +49,13 @@ const downloads = [
 export default function ToolsPage() {
   return (
     <>
-      <PageBanner title="Tools & Resources" />
+      <PageBanner
+        title="Tools & Downloads"
+        subtitle="Free templates and practical documents for tenants, landlords, and property owners."
+        image="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1600&q=80&auto=format&fit=crop"
+        imageAlt="Documents and property management tools"
+        breadcrumbs={[{ label: "Resources", href: "/resources" }, { label: "Tools & Downloads" }]}
+      />
 
       <section className="bg-white">
         <div className="mx-auto max-w-6xl px-6 py-20">

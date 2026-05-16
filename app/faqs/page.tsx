@@ -12,7 +12,13 @@ export const metadata: Metadata = {
 export default function FAQsPage() {
   return (
     <>
-      <PageBanner title="Frequently Asked Questions" />
+      <PageBanner
+        title="Frequently Asked Questions"
+        subtitle="Answers about managing agent services, tenant applications, lease requirements, and more."
+        image="https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=1600&q=80&auto=format&fit=crop"
+        imageAlt="Modern interior property space"
+        breadcrumbs={[{ label: "FAQs" }]}
+      />
       <section className="bg-white">
         <div className="mx-auto max-w-3xl px-6 py-20">
           <FAQAccordion />

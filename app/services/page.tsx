@@ -11,7 +11,13 @@ export const metadata: Metadata = {
 export default function ServicesPage() {
   return (
     <>
-      <PageBanner title="Our Services" />
+      <PageBanner
+        title="Our Services"
+        subtitle="From managing agent mandates to direct portfolio management — professional, accountable, and transparent."
+        image="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=80&auto=format&fit=crop"
+        imageAlt="Modern office building"
+        breadcrumbs={[{ label: "Services" }]}
+      />
 
       <section className="bg-white">
         <div className="mx-auto max-w-5xl px-6 py-20">

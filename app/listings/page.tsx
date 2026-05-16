@@ -12,7 +12,13 @@ export const metadata: Metadata = {
 export default function ListingsPage() {
   return (
     <>
-      <PageBanner title="Properties" />
+      <PageBanner
+        title="Property Listings"
+        subtitle="Residential and commercial units across Kempton Park, Alberton, and greater Johannesburg."
+        image="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1600&q=80&auto=format&fit=crop"
+        imageAlt="Residential property complex"
+        breadcrumbs={[{ label: "Listings" }]}
+      />
 
       <section className="bg-white">
         <div className="mx-auto max-w-5xl px-6 py-20">

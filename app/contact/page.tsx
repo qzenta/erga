@@ -13,7 +13,13 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
-      <PageBanner title="Get In Touch" />
+      <PageBanner
+        title="Get In Touch"
+        subtitle="Whether you're a property owner or a prospective tenant — we'd like to hear from you."
+        image="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1600&q=80&auto=format&fit=crop"
+        imageAlt="Modern building exterior Johannesburg"
+        breadcrumbs={[{ label: "Contact" }]}
+      />
 
       <section className="bg-white">
         <div className="mx-auto max-w-4xl px-6 py-20">

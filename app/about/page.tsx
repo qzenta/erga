@@ -10,7 +10,13 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      <PageBanner title="About Us" />
+      <PageBanner
+        title="About Erga Properties"
+        subtitle="A Johannesburg-based property company built on financial discipline, integrity, and hands-on property oversight."
+        image="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1600&q=80&auto=format&fit=crop"
+        imageAlt="Professional property management team"
+        breadcrumbs={[{ label: "About Us" }]}
+      />
 
       {/* The Company */}
       <section className="bg-white">

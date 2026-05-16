@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
   return (
     <>
-      <PageBanner title="Privacy Policy" />
+      <PageBanner title="Privacy Policy" breadcrumbs={[{ label: "Privacy Policy" }]} />
 
       <section className="bg-white">
         <div className="mx-auto max-w-3xl px-6 py-20">
