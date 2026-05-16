@@ -1,65 +1,121 @@
-import Image from "next/image";
+import type { Metadata } from "next";
+import HeroSlider from "@/components/HeroSlider";
+import PartnersSection from "@/components/PartnersSection";
 
-export default function Home() {
+export const metadata: Metadata = {
+  title: {
+    absolute:
+      "Erga Properties | Property Management Johannesburg, Gauteng",
+  },
+  description:
+    "Erga Properties offers professional property management and managing agent services across Johannesburg and Gauteng. Own portfolio and tenant support. Contact us today.",
+};
+
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <>
+      <HeroSlider />
+
+      <GoldDivider />
+
+      {/* Who We Are */}
+      <section className="bg-white">
+        <div className="mx-auto max-w-6xl px-6 py-20 grid gap-12 md:grid-cols-2 items-center">
+          <div>
+            <h2 className="text-3xl md:text-4xl text-navy mb-2">Who We Are</h2>
+            <span className="block w-16 h-[2px] bg-gold mb-6" />
+          </div>
+          <p className="text-navy/90 leading-relaxed text-lg">
+            Erga Concepts (Pty) Ltd is a Johannesburg-based property company
+            offering both direct rental portfolio management and professional
+            managing agent services to property owners across Gauteng.
+            Registered since 2015 and now formally active, Erga Properties
+            combines financial discipline with hands-on property oversight to
+            deliver reliable, transparent outcomes for owners and tenants alike.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+      </section>
+
+      <GoldDivider />
+
+      {/* Three icon cards */}
+      <section className="bg-white">
+        <div className="mx-auto max-w-6xl px-6 py-20">
+          <div className="grid gap-8 md:grid-cols-3">
+            <IconCard
+              icon={<PortfolioIcon />}
+              title="Own Portfolio"
+              body="Residential and commercial units managed directly by Erga, maintained to a high standard for quality tenants."
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            <IconCard
+              icon={<AgentIcon />}
+              title="Managing Agent Services"
+              body="Professional end-to-end management for property owners who want a hands-off, financially disciplined operator."
+            />
+            <IconCard
+              icon={<TenantIcon />}
+              title="Tenant Support"
+              body="Responsive communication, fair lease administration, and transparent handling of maintenance and queries."
+            />
+          </div>
         </div>
-      </main>
+      </section>
+
+      <PartnersSection />
+    </>
+  );
+}
+
+function GoldDivider() {
+  return (
+    <div className="mx-auto max-w-6xl px-6">
+      <div className="h-px bg-gold/40" />
     </div>
+  );
+}
+
+function IconCard({
+  icon,
+  title,
+  body,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  body: string;
+}) {
+  return (
+    <div className="border border-gold/30 p-8 flex flex-col items-start hover:border-gold transition-colors bg-white">
+      <div className="mb-5 text-gold">{icon}</div>
+      <h3 className="text-xl text-navy mb-3">{title}</h3>
+      <p className="text-navy/80 leading-relaxed">{body}</p>
+    </div>
+  );
+}
+
+function PortfolioIcon() {
+  return (
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <path d="M3 21V9l9-6 9 6v12" strokeLinejoin="round" />
+      <path d="M9 21V12h6v9" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function AgentIcon() {
+  return (
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <rect x="3" y="7" width="18" height="13" rx="1" />
+      <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+      <path d="M3 13h18" />
+    </svg>
+  );
+}
+
+function TenantIcon() {
+  return (
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <circle cx="12" cy="8" r="4" />
+      <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" strokeLinecap="round" />
+    </svg>
   );
 }

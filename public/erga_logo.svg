@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 120" role="img" aria-label="Erga Properties">
+  <defs>
+    <linearGradient id="navyGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2a3d63"/>
+      <stop offset="100%" stop-color="#1B2A4A"/>
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c2a14d"/>
+      <stop offset="100%" stop-color="#9A7B2F"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 3D skyline mark -->
+  <g transform="translate(8,18)">
+    <!-- back building (gold highlight) -->
+    <polygon points="54,0 86,12 86,84 54,84" fill="url(#goldGrad)"/>
+    <polygon points="54,0 22,12 22,84 54,84" fill="#7a621f"/>
+    <!-- middle building (navy) -->
+    <polygon points="36,18 64,28 64,92 36,92" fill="url(#navyGrad)"/>
+    <polygon points="36,18 10,28 10,92 36,92" fill="#13203a"/>
+    <!-- front building (dark navy) -->
+    <polygon points="22,34 48,44 48,100 22,100" fill="#0f1a30"/>
+    <polygon points="22,34 0,44 0,100 22,100" fill="#1B2A4A"/>
+    <!-- gold window accents -->
+    <rect x="28" y="50" width="4" height="4" fill="#9A7B2F"/>
+    <rect x="28" y="60" width="4" height="4" fill="#9A7B2F"/>
+    <rect x="28" y="70" width="4" height="4" fill="#9A7B2F"/>
+    <rect x="40" y="34" width="4" height="4" fill="#9A7B2F"/>
+    <rect x="40" y="44" width="4" height="4" fill="#9A7B2F"/>
+    <rect x="40" y="54" width="4" height="4" fill="#9A7B2F"/>
+  </g>
+
+  <!-- Wordmark -->
+  <g transform="translate(130,0)" fill="#1B2A4A" font-family="Georgia, 'Playfair Display', serif">
+    <text x="0" y="62" font-size="52" font-weight="600" letter-spacing="4">ERGA</text>
+    <line x1="0" y1="74" x2="260" y2="74" stroke="#9A7B2F" stroke-width="1.5"/>
+    <text x="0" y="98" font-size="16" font-weight="400" letter-spacing="8" fill="#9A7B2F" font-family="Georgia, 'Playfair Display', serif">PROPERTIES</text>
+  </g>
+</svg>
