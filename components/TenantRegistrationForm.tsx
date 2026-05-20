@@ -2,8 +2,6 @@
 
 import { useState } from "react";
 
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/mwvaqwvk";
-
 type Status = "idle" | "submitting" | "success" | "error";
 
 export default function TenantRegistrationForm() {
@@ -17,22 +15,31 @@ export default function TenantRegistrationForm() {
 
     const form = event.currentTarget;
     const data = new FormData(form);
-    data.append("_subject", "Prospective Tenant Registration");
+
+    const body = {
+      name: data.get("name") as string,
+      email: data.get("email") as string,
+      phone: data.get("phone") as string,
+      preferredArea: data.get("preferredArea") as string,
+      propertyType: data.get("propertyType") as string,
+      message: data.get("message") as string,
+    };
 
     try {
-      const res = await fetch(FORMSPREE_ENDPOINT, {
+      const res = await fetch("/api/tenant", {
         method: "POST",
-        headers: { Accept: "application/json" },
-        body: data,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
       });
+
+      const json = await res.json().catch(() => null);
 
       if (res.ok) {
         setStatus("success");
         form.reset();
       } else {
-        const json = await res.json().catch(() => null);
         setErrorMsg(
-          json?.errors?.[0]?.message ??
+          json?.error ??
             "We couldn't send your registration. Please try again or email us directly.",
         );
         setStatus("error");

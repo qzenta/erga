@@ -9,11 +9,11 @@ This is a **separate project** from Sikatrix.com (which lives at `C:\Users\Danie
 
 ## Location
 `C:\Users\Daniel\Documents\erga`
-- GitHub: `github.com/onukpad/erga-properties` (private)
+- GitHub: `github.com/onukpad/erga` (private, renamed from erga-properties 2026-05-20)
 - Vercel project: `erga-properties` (daniels-projects-bc877f22)
 
 ## Stack
-- **Next.js 15** (App Router)
+- **Next.js 16** (App Router)
 - **TypeScript**
 - **Tailwind CSS v4**
 - **ESLint** (`eslint-config-next`)
@@ -29,9 +29,14 @@ This is a **separate project** from Sikatrix.com (which lives at `C:\Users\Danie
 Define these as Tailwind theme tokens (e.g. `navy`, `gold`) so they are used consistently across components rather than inlined as hex.
 
 ## Deployment
-- Target: **Vercel**
-- No production deploy yet — set up when the user is ready to push
-- Environment variables will live in Vercel project settings; never commit `.env*` files
+- Target: **Vercel** — live at erga-properties.vercel.app; custom domain erga.co.za DNS propagating via Cloudflare
+- Deploy: `git push origin master`
+- Environment variables: `BREVO_API_KEY` required in Vercel project settings and `.env.local`; never commit `.env*` files
+
+## Email
+- `lib/brevo.ts` — Brevo HTTP API helper (sender: info@erga.co.za)
+- `app/api/contact/route.ts` — contact form handler (notification + auto-reply)
+- `app/api/tenant/route.ts` — tenant registration handler (notification only)
 
 ## Dev workflow
 ```
