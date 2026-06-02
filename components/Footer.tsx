@@ -40,7 +40,7 @@ export default function Footer() {
       <div className="h-0.5 bg-[#9A7B2F]" />
 
       {/* 4-column grid */}
-      <div className="mx-auto max-w-6xl px-6 py-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-4 items-start">
+      <div className="mx-auto max-w-6xl px-6 py-12 grid gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 items-start">
 
         {/* Col 1 — Brand */}
         <div className="flex flex-col gap-4">
@@ -84,12 +84,12 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Col 3 — Services & Tools */}
+        {/* Col 3 — Services */}
         <div>
           <h3 className="text-[11px] tracking-[0.18em] uppercase text-[#9A7B2F] font-semibold mb-4">
-            Services &amp; Tools
+            Services
           </h3>
-          <ul className="space-y-2.5 mb-6">
+          <ul className="space-y-2.5">
             {serviceLinks.map((link) => (
               <li key={link.href + link.label}>
                 <Link href={link.href} className="text-white/65 hover:text-white text-[13px] transition-colors">
@@ -98,6 +98,10 @@ export default function Footer() {
               </li>
             ))}
           </ul>
+        </div>
+
+        {/* Col 4 — Resources */}
+        <div>
           <h3 className="text-[11px] tracking-[0.18em] uppercase text-[#9A7B2F] font-semibold mb-4">
             Resources
           </h3>
