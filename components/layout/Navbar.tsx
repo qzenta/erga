@@ -252,21 +252,23 @@ export default function Navbar() {
                 <Link
                   href={item.href ?? "#"}
                   className={[
-                    "flex items-center gap-1 px-3 py-1 text-[13px] font-medium uppercase tracking-[0.05em] text-[#1B2A4A] transition-colors hover:text-[#9A7B2F]",
-                    "relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-[#9A7B2F] after:scale-x-0 after:transition-transform after:duration-200",
-                    pathname.startsWith(item.href ?? "___") ? "after:scale-x-100 text-[#9A7B2F]" : "",
+                    "block px-3 py-1 text-[13px] font-medium uppercase tracking-[0.05em] transition-colors",
+                    isActive || pathname.startsWith(item.href ?? "___")
+                      ? "text-[#9A7B2F]"
+                      : "text-[#1B2A4A] hover:text-[#9A7B2F]",
                   ].join(" ")}
                 >
                   {item.label}
-                  {hasSub && (
-                    <svg
-                      width="10" height="10" viewBox="0 0 24 24" fill="none"
-                      stroke="currentColor" strokeWidth="2.5"
-                      className={`transition-transform duration-200 ${isActive ? "rotate-180" : ""}`}
-                    >
-                      <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  )}
+                  {/* Gold underline bar — visible on hover (isActive) and active route */}
+                  <span
+                    className={[
+                      "block h-[2px] bg-[#9A7B2F] transition-all duration-200 mt-0.5",
+                      isActive || pathname.startsWith(item.href ?? "___")
+                        ? "opacity-100 scale-x-100"
+                        : "opacity-0 scale-x-0",
+                    ].join(" ")}
+                    style={{ transformOrigin: "left" }}
+                  />
                 </Link>
 
                 {/* Simple dropdown (CONTACT) */}
