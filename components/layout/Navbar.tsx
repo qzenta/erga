@@ -21,6 +21,10 @@ type NavItem = {
 
 const NAV: NavItem[] = [
   {
+    label: "HOME",
+    href: "/",
+  },
+  {
     label: "RENT",
     mega: {
       columns: [
@@ -129,6 +133,50 @@ const NAV: NavItem[] = [
     },
   },
   {
+    label: "TOOLS",
+    mega: {
+      columns: [
+        { type: "image", src: img("bond calculator mortgage South Africa"), alt: "Property calculators" },
+        {
+          type: "links",
+          heading: "Calculators",
+          items: [
+            { label: "Bond Calculator", href: "/calculator" },
+            { label: "Affordability Calculator", href: "/calculator#affordability" },
+            { label: "Rental Yield Estimator", href: "/calculator#yield" },
+            { label: "Transfer Cost Calculator", href: "/calculator#transfer" },
+          ],
+        },
+        { type: "image", src: img("documents forms property lease"), alt: "Forms and downloads" },
+        {
+          type: "links",
+          heading: "Forms & Downloads",
+          items: [
+            { label: "Tenant Application Form", href: "/tools#tenant-application" },
+            { label: "Maintenance Request Form", href: "/tools#maintenance" },
+            { label: "Rental Agreement Template", href: "/tools#lease-template" },
+            { label: "Landlord Information Pack", href: "/tools#landlord-pack" },
+          ],
+        },
+        { type: "image", src: img("South Africa suburb map area profile"), alt: "Area data" },
+        {
+          type: "links",
+          heading: "Area Intelligence",
+          items: [
+            { label: "Suburb Profiles", href: "/tools#suburb-profiles" },
+            { label: "Rental Price Index", href: "/tools#price-index" },
+            { label: "School Zone Finder", href: "/tools#schools" },
+            { label: "Municipal Rates Lookup", href: "/tools#rates" },
+          ],
+        },
+      ],
+      ctas: [
+        { label: "All Tools", href: "/tools" },
+        { label: "Bond Pre-Qualification", href: "/contact#bond" },
+      ],
+    },
+  },
+  {
     label: "RESOURCES",
     mega: {
       columns: [
@@ -204,6 +252,13 @@ const NAV: NavItem[] = [
   },
 ];
 
+/* Exact match for "/" to avoid every route highlighting HOME */
+function isRouteActive(pathname: string, href: string | undefined): boolean {
+  if (!href) return false;
+  if (href === "/") return pathname === "/";
+  return pathname.startsWith(href);
+}
+
 /* ─── Component ───────────────────────────────────────────────────────── */
 export default function Navbar() {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
@@ -253,7 +308,7 @@ export default function Navbar() {
                   href={item.href ?? "#"}
                   className={[
                     "block px-3 py-1 text-[13px] font-medium uppercase tracking-[0.05em] transition-colors",
-                    isActive || pathname.startsWith(item.href ?? "___")
+                    isActive || isRouteActive(pathname, item.href)
                       ? "text-[#9A7B2F]"
                       : "text-[#1B2A4A] hover:text-[#9A7B2F]",
                   ].join(" ")}
@@ -263,7 +318,7 @@ export default function Navbar() {
                   <span
                     className={[
                       "block h-[2px] bg-[#9A7B2F] transition-all duration-200 mt-0.5",
-                      isActive || pathname.startsWith(item.href ?? "___")
+                      isActive || isRouteActive(pathname, item.href)
                         ? "opacity-100 scale-x-100"
                         : "opacity-0 scale-x-0",
                     ].join(" ")}
