@@ -90,7 +90,7 @@ export default function ServicesPage() {
 
                 {/* Text */}
                 <div>
-                  <h2 className="font-serif text-[30px] text-[#1B2A4A] mb-4 leading-tight">{svc.title}</h2>
+                  <h2 className="text-[30px] text-[#1B2A4A] font-bold mb-4 leading-tight">{svc.title}</h2>
                   <div className="w-10 h-0.5 bg-[#9A7B2F] mb-5" />
                   <p className="text-[#1B2A4A]/70 leading-relaxed mb-6">{svc.body}</p>
 
@@ -130,7 +130,7 @@ export default function ServicesPage() {
         <div className="mx-auto max-w-5xl px-6 py-16">
           <div className="text-center mb-12">
             <p className="text-[#9A7B2F] text-[12px] tracking-[0.2em] uppercase font-medium mb-2">Simple process</p>
-            <h2 className="font-serif text-[32px] text-[#1B2A4A] font-light">How it works</h2>
+            <h2 className="text-[32px] text-[#1B2A4A] font-bold">How it works</h2>
           </div>
 
           <div className="relative">

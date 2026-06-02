@@ -89,7 +89,7 @@ export default function PageBanner({
         </div>
 
         {/* Title */}
-        <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-white font-light leading-tight max-w-3xl">
+        <h1 className="text-4xl md:text-5xl lg:text-[56px] text-white font-bold leading-tight max-w-3xl tracking-tight">
           {title}
         </h1>
 

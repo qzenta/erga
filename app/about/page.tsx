@@ -25,7 +25,7 @@ export default function AboutPage() {
         <div className="mx-auto max-w-6xl px-6 py-16 grid gap-12 md:grid-cols-2 items-center">
           <div>
             <p className="text-[#9A7B2F] text-[12px] tracking-[0.2em] uppercase font-medium mb-3">The company</p>
-            <h2 className="font-serif text-[32px] text-[#1B2A4A] font-light mb-5 leading-tight">
+            <h2 className="text-[32px] text-[#1B2A4A] font-bold mb-5 leading-tight">
               Built on discipline, trust, and results
             </h2>
             <div className="w-10 h-0.5 bg-[#9A7B2F] mb-6" />
@@ -71,7 +71,7 @@ export default function AboutPage() {
         <div className="mx-auto max-w-5xl px-6 py-16">
           <div className="text-center mb-12">
             <p className="text-[#9A7B2F] text-[12px] tracking-[0.2em] uppercase font-medium mb-2">Our story</p>
-            <h2 className="font-serif text-[32px] text-[#1B2A4A] font-light">Our journey</h2>
+            <h2 className="text-[32px] text-[#1B2A4A] font-bold">Our journey</h2>
           </div>
           <div className="relative">
             <div className="absolute left-6 top-0 bottom-0 w-px bg-[#9A7B2F]/30 md:left-1/2" aria-hidden="true" />
@@ -96,7 +96,7 @@ export default function AboutPage() {
         <div className="mx-auto max-w-6xl px-6 py-16">
           <div className="text-center mb-12">
             <p className="text-[#9A7B2F] text-[12px] tracking-[0.2em] uppercase font-medium mb-2">How we work</p>
-            <h2 className="font-serif text-[32px] text-[#1B2A4A] font-light">Our approach</h2>
+            <h2 className="text-[32px] text-[#1B2A4A] font-bold">Our approach</h2>
           </div>
 
           <div className="grid gap-6 md:grid-cols-3">
@@ -155,7 +155,7 @@ export default function AboutPage() {
           </div>
           <div>
             <p className="text-[#9A7B2F] text-[12px] tracking-[0.2em] uppercase font-medium mb-3">Partners & associations</p>
-            <h2 className="font-serif text-[28px] text-[#1B2A4A] font-light mb-5 leading-tight">
+            <h2 className="text-[28px] text-[#1B2A4A] font-bold mb-5 leading-tight">
               Backed by professional expertise
             </h2>
             <div className="space-y-4 text-[#1B2A4A]/65 leading-relaxed text-[14px]">
