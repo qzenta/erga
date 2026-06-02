@@ -21,11 +21,11 @@ type NavItem = {
 
 const NAV: NavItem[] = [
   {
-    label: "HOME",
+    label: "Home",
     href: "/",
   },
   {
-    label: "RENT",
+    label: "Rent",
     mega: {
       columns: [
         { type: "image", src: img("residential rental South Africa interior"), alt: "Residential rentals" },
@@ -58,7 +58,7 @@ const NAV: NavItem[] = [
     },
   },
   {
-    label: "BUY",
+    label: "Buy",
     mega: {
       columns: [
         { type: "image", src: img("modern house exterior South Africa"), alt: "Houses for sale" },
@@ -100,7 +100,7 @@ const NAV: NavItem[] = [
     },
   },
   {
-    label: "SERVICES",
+    label: "Services",
     mega: {
       columns: [
         { type: "image", src: img("property manager keys handover"), alt: "Property management" },
@@ -133,7 +133,7 @@ const NAV: NavItem[] = [
     },
   },
   {
-    label: "TOOLS",
+    label: "Tools",
     mega: {
       columns: [
         { type: "image", src: img("bond calculator mortgage South Africa"), alt: "Property calculators" },
@@ -177,7 +177,7 @@ const NAV: NavItem[] = [
     },
   },
   {
-    label: "RESOURCES",
+    label: "Resources",
     mega: {
       columns: [
         { type: "image", src: img("calculator documents real estate"), alt: "Property tools" },
@@ -210,7 +210,7 @@ const NAV: NavItem[] = [
     },
   },
   {
-    label: "ABOUT",
+    label: "About",
     mega: {
       columns: [
         { type: "image", src: img("professional team Johannesburg skyline"), alt: "About Erga" },
@@ -242,7 +242,7 @@ const NAV: NavItem[] = [
     },
   },
   {
-    label: "CONTACT",
+    label: "Contact",
     simple: [
       { label: "Contact Us", href: "/contact" },
       { label: "Report a Maintenance Issue", href: "/contact#maintenance" },
@@ -307,7 +307,7 @@ export default function Navbar() {
                 <Link
                   href={item.href ?? "#"}
                   className={[
-                    "block px-3 py-1 text-[13px] font-medium uppercase tracking-[0.05em] transition-colors",
+                    "block px-3 py-1 text-[14px] font-medium tracking-[-0.01em] transition-colors",
                     isActive || isRouteActive(pathname, item.href)
                       ? "text-[#9A7B2F]"
                       : "text-[#1B2A4A] hover:text-[#9A7B2F]",
@@ -421,7 +421,7 @@ export default function Navbar() {
                     <>
                       <button
                         type="button"
-                        className="w-full flex items-center justify-between px-6 py-4 text-[13px] font-medium uppercase tracking-[0.05em] text-[#1B2A4A]"
+                        className="w-full flex items-center justify-between px-6 py-4 text-[14px] font-medium text-[#1B2A4A]"
                         onClick={() =>
                           setMobileExpanded((prev) =>
                             prev === item.label ? null : item.label
@@ -469,7 +469,7 @@ export default function Navbar() {
                   ) : (
                     <Link
                       href={item.href ?? "#"}
-                      className="block px-6 py-4 text-[13px] font-medium uppercase tracking-[0.05em] text-[#1B2A4A] hover:text-[#9A7B2F] transition-colors"
+                      className="block px-6 py-4 text-[14px] font-medium text-[#1B2A4A] hover:text-[#9A7B2F] transition-colors"
                       onClick={() => setMobileOpen(false)}
                     >
                       {item.label}
