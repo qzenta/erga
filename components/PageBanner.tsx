@@ -21,7 +21,7 @@ export default function PageBanner({
   return (
     <div
       className="relative w-full overflow-hidden flex flex-col justify-end"
-      style={{ minHeight: "320px", paddingTop: "80px" }}
+      style={{ minHeight: "320px", paddingTop: "60px" }}
     >
       {/* Background: image or navy gradient fallback */}
       {image ? (

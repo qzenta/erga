@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { DM_Sans, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header";
+import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
@@ -63,7 +63,7 @@ export default function RootLayout({
       className={`${dmSans.variable} ${cormorant.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-white text-navy">
-        <Header />
+        <Navbar />
         <main className="flex-1 flex flex-col">{children}</main>
         <Footer />
         <WhatsAppButton />
