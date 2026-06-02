@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-// Section A — confirmed partners with real logos
+/* ─── Confirmed Erga partners (real logos on file) ────────────────────── */
 const featuredPartners = [
   {
     name: "Sikatrix Business Accountants",
@@ -14,26 +14,37 @@ const featuredPartners = [
   },
 ];
 
-// Section B — associate network placeholders
-const associates = [
-  { initials: "LP", label: "Legal Partner" },
-  { initials: "IP", label: "Insurance Partner" },
-  { initials: "BF", label: "Bond & Finance" },
+/* ─── Industry network — SA property ecosystem companies ──────────────── */
+const industryNetwork: { name: string; category: string; color: string }[] = [
+  { name: "ooba Home Loans",        category: "Bond Originator",       color: "#E8341C" },
+  { name: "BetterBond",             category: "Bond Originator",       color: "#00529B" },
+  { name: "TPN Credit Bureau",      category: "Rental Credit Bureau",  color: "#2D7D46" },
+  { name: "PayProp",                category: "Rental Payments",       color: "#5B2D8E" },
+  { name: "Lightstone Property",    category: "Property Data",         color: "#1A5276" },
+  { name: "Absa Home Loans",        category: "Property Finance",      color: "#DC0000" },
+  { name: "Santam",                 category: "Property Insurance",    color: "#003DA5" },
+  { name: "Seeff Properties",       category: "Real Estate Network",   color: "#C0392B" },
+  { name: "RE/MAX SA",              category: "Real Estate Network",   color: "#003087" },
+  { name: "PPRA",                   category: "Industry Regulator",    color: "#1B2A4A" },
+  { name: "TransUnion",             category: "Credit Bureau",         color: "#E8860A" },
+  { name: "Standard Bank",          category: "Property Finance",      color: "#007AC2" },
 ];
+
+/* Duplicate for seamless infinite scroll */
+const marqueeItems = [...industryNetwork, ...industryNetwork];
 
 export default function PartnersSection() {
   return (
-    <section className="bg-white border-t border-gold/20 py-16">
-      {/* Section A: Our Partners */}
+    <section className="bg-white border-t border-[#E5E7EB] py-14">
+
+      {/* ── Confirmed partners ──────────────────────────────────────── */}
       <div className="mx-auto max-w-6xl px-6">
-        <div className="text-center mb-10">
-          <h2 className="text-2xl md:text-3xl text-navy mb-2">
-            Our Partners
-          </h2>
-          <span className="block w-16 h-[2px] bg-gold mx-auto" />
+        <div className="text-center mb-8">
+          <p className="text-[#9A7B2F] text-[11px] tracking-[0.2em] uppercase font-semibold mb-2">Trusted partners</p>
+          <h2 className="text-[#1B2A4A] text-[24px] font-bold">Our Partners</h2>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-8 mb-14">
+        <div className="flex flex-wrap justify-center gap-5 mb-12">
           {featuredPartners.map((p) => (
             <a
               key={p.name}
@@ -41,7 +52,7 @@ export default function PartnersSection() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={p.name}
-              className="group flex items-center justify-center bg-white border border-navy/15 hover:border-gold transition-colors"
+              className="group flex items-center justify-center bg-white border border-[#E5E7EB] hover:border-[#9A7B2F] transition-colors"
               style={{ width: 180, height: 80, padding: "12px 20px" }}
             >
               <Image
@@ -49,51 +60,42 @@ export default function PartnersSection() {
                 alt={p.name}
                 width={140}
                 height={56}
-                className="object-contain w-auto h-auto max-h-[56px] max-w-[140px] group-hover:opacity-80 transition-opacity"
+                className="object-contain w-auto h-auto max-h-[56px] max-w-[140px] group-hover:opacity-75 transition-opacity"
               />
             </a>
           ))}
         </div>
-
-        {/* Section B: Associate Network */}
-        <div className="border-t border-gold/15 pt-10">
-          <p className="text-center text-[11px] tracking-widest uppercase text-navy/40 mb-7">
-            Associate Network
-          </p>
-        </div>
       </div>
 
-      <div className="overflow-hidden marquee-wrapper">
-        <div className="flex items-center marquee-track">
-          {/* 4 copies per half × 2 halves = 8 sets — ensures no gap at any viewport width */}
-          {[...Array(4)].flatMap((_, s) =>
-            associates.map((a, i) => (
-              <div key={`a-${s}-${i}`} className="flex-shrink-0 mx-4">
+      {/* ── Industry network marquee ─────────────────────────────────── */}
+      <div className="border-t border-[#E5E7EB] pt-10">
+        <p className="text-center text-[11px] tracking-[0.2em] uppercase text-[#1B2A4A]/35 font-medium mb-7 px-6">
+          Property ecosystem — industry network
+        </p>
+
+        <div className="overflow-hidden marquee-wrapper">
+          <div className="flex items-stretch marquee-track">
+            {marqueeItems.map((company, i) => (
+              <div key={i} className="flex-shrink-0 mx-2.5">
                 <div
-                  className="w-[110px] h-[110px] bg-navy flex items-center justify-center rounded-sm"
-                  title={a.label}
+                  className="flex flex-col items-center justify-center bg-white border border-[#E5E7EB] hover:border-[#9A7B2F] transition-colors px-6 py-4 cursor-default"
+                  style={{ width: 172, height: 80 }}
                 >
-                  <span className="font-serif text-gold text-2xl font-semibold tracking-widest">
-                    {a.initials}
-                  </span>
+                  {/* Coloured accent bar */}
+                  <div
+                    className="w-6 h-0.5 mb-2 rounded-full"
+                    style={{ background: company.color }}
+                  />
+                  <p className="font-bold text-[#1B2A4A] text-[13px] leading-tight text-center">
+                    {company.name}
+                  </p>
+                  <p className="text-[#1B2A4A]/40 text-[10px] mt-1 tracking-wide text-center leading-tight">
+                    {company.category}
+                  </p>
                 </div>
               </div>
-            ))
-          )}
-          {[...Array(4)].flatMap((_, s) =>
-            associates.map((a, i) => (
-              <div key={`b-${s}-${i}`} className="flex-shrink-0 mx-4">
-                <div
-                  className="w-[110px] h-[110px] bg-navy flex items-center justify-center rounded-sm"
-                  title={a.label}
-                >
-                  <span className="font-serif text-gold text-2xl font-semibold tracking-widest">
-                    {a.initials}
-                  </span>
-                </div>
-              </div>
-            ))
-          )}
+            ))}
+          </div>
         </div>
       </div>
     </section>

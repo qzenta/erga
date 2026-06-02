@@ -1,119 +1,164 @@
 import Link from "next/link";
-import Logo from "./Logo";
+import ErgoLogo from "@/components/ui/ErgoLogo";
 
-const quickLinks = [
+const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/services", label: "Services" },
   { href: "/listings", label: "Listings" },
-  { href: "/about", label: "About" },
-  { href: "/resources", label: "Resources" },
-  { href: "/calculator", label: "Calculator" },
-  { href: "/tools", label: "Tools" },
+  { href: "/rent", label: "Rent" },
+  { href: "/buy", label: "Buy" },
+  { href: "/about", label: "About Us" },
   { href: "/contact", label: "Contact" },
+];
+
+const serviceLinks = [
+  { href: "/services#portfolio", label: "Portfolio Management" },
+  { href: "/services#managing-agent", label: "Managing Agent" },
+  { href: "/services#tenant-placement", label: "Tenant Placement" },
+  { href: "/services#collections", label: "Rental Collections" },
+  { href: "/contact", label: "Get a Quote" },
+  { href: "/listings#register", label: "Apply as Tenant" },
+];
+
+const resourceLinks = [
+  { href: "/resources", label: "Blog & Guides" },
+  { href: "/calculator", label: "Bond Calculator" },
+  { href: "/tools", label: "Tools & Downloads" },
+  { href: "/faqs", label: "FAQs" },
+  { href: "/downloads/tenant-checklist", label: "Tenant Checklist" },
+  { href: "/downloads/managing-agent-guide", label: "Owner Guide" },
 ];
 
 const legalLinks = [
   { href: "/privacy", label: "Privacy Policy" },
-  { href: "/terms", label: "Terms" },
+  { href: "/terms", label: "Terms of Use" },
   { href: "/cookies", label: "Cookies" },
-  { href: "/faqs", label: "FAQs" },
 ];
 
 export default function Footer() {
   return (
-    <footer className="mt-auto bg-navy text-white">
-      <div className="border-t-2 border-gold" />
+    <footer className="mt-auto bg-[#1B2A4A] text-white">
+      <div className="h-0.5 bg-[#9A7B2F]" />
 
-      <div className="mx-auto max-w-6xl px-6 py-12 grid gap-10 md:grid-cols-3 items-start text-sm">
-        {/* Logo + tagline + socials */}
-        <div className="flex flex-col items-center md:items-start gap-4">
-          <Logo variant="footer" />
-          <p className="text-white/50 text-xs leading-relaxed text-center md:text-left">
+      {/* 4-column grid */}
+      <div className="mx-auto max-w-6xl px-6 py-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-4 items-start">
+
+        {/* Col 1 — Brand */}
+        <div className="flex flex-col gap-4">
+          <ErgoLogo className="h-10 w-auto brightness-0 invert" />
+          <p className="text-white/50 text-[12px] leading-relaxed">
             Erga Concepts (Pty) Ltd<br />
-            Trading as Erga Properties
+            Trading as Erga Properties<br />
+            Alberton, Gauteng
           </p>
-          <div className="flex items-center gap-4 mt-1">
-            <a href="#" aria-label="LinkedIn" className="text-white hover:text-gold transition-colors">
+          <p className="text-white/40 text-[11px] leading-relaxed">
+            Professional property management<br />
+            across Gauteng since 2015.
+          </p>
+          {/* Socials */}
+          <div className="flex items-center gap-3 mt-1">
+            <a href="#" aria-label="LinkedIn" className="text-white/60 hover:text-[#9A7B2F] transition-colors">
               <LinkedInIcon />
             </a>
-            <a href="#" aria-label="Facebook" className="text-white hover:text-gold transition-colors">
+            <a href="#" aria-label="Facebook" className="text-white/60 hover:text-[#9A7B2F] transition-colors">
               <FacebookIcon />
             </a>
-            <a href="#" aria-label="Instagram" className="text-white hover:text-gold transition-colors">
+            <a href="#" aria-label="Instagram" className="text-white/60 hover:text-[#9A7B2F] transition-colors">
               <InstagramIcon />
             </a>
           </div>
         </div>
 
-        {/* Quick Links */}
-        <div className="flex flex-col items-center md:items-start">
-          <h3 className="text-xs tracking-widest uppercase text-gold mb-4">
-            Quick Links
+        {/* Col 2 — Navigate */}
+        <div>
+          <h3 className="text-[11px] tracking-[0.18em] uppercase text-[#9A7B2F] font-semibold mb-4">
+            Navigate
           </h3>
-          <nav aria-label="Footer quick links">
-            <ul className="space-y-2">
-              {quickLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-white/75 hover:text-gold transition-colors text-sm"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          <ul className="space-y-2.5">
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <Link href={link.href} className="text-white/65 hover:text-white text-[13px] transition-colors">
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
 
-        {/* Contact */}
-        <div className="flex flex-col items-center md:items-start gap-4">
-          <h3 className="text-xs tracking-widest uppercase text-gold mb-0">
-            Contact
+        {/* Col 3 — Services & Tools */}
+        <div>
+          <h3 className="text-[11px] tracking-[0.18em] uppercase text-[#9A7B2F] font-semibold mb-4">
+            Services &amp; Tools
+          </h3>
+          <ul className="space-y-2.5 mb-6">
+            {serviceLinks.map((link) => (
+              <li key={link.href + link.label}>
+                <Link href={link.href} className="text-white/65 hover:text-white text-[13px] transition-colors">
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <h3 className="text-[11px] tracking-[0.18em] uppercase text-[#9A7B2F] font-semibold mb-4">
+            Resources
+          </h3>
+          <ul className="space-y-2.5">
+            {resourceLinks.map((link) => (
+              <li key={link.href + link.label}>
+                <Link href={link.href} className="text-white/65 hover:text-white text-[13px] transition-colors">
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Col 4 — Contact */}
+        <div className="flex flex-col gap-4">
+          <h3 className="text-[11px] tracking-[0.18em] uppercase text-[#9A7B2F] font-semibold">
+            Contact Us
           </h3>
           <a
             href="mailto:info@erga.co.za"
-            className="text-white/85 hover:text-gold transition-colors text-sm"
+            className="text-white/80 hover:text-[#9A7B2F] text-[13px] transition-colors"
           >
             info@erga.co.za
           </a>
-          <address className="not-italic text-white/60 text-xs leading-relaxed">
+          <address className="not-italic text-white/55 text-[12px] leading-relaxed">
             37 Kamferbos Street<br />
-            Brackendowns<br />
-            Alberton, 1448<br />
-            Gauteng, South Africa
+            Brackendowns, Alberton<br />
+            1448, Gauteng<br />
+            South Africa
           </address>
-          <div className="text-xs text-white/50 leading-relaxed">
-            <span className="block text-white/70 uppercase tracking-widest text-[10px] mb-1">
-              Office Hours
-            </span>
-            Mon–Fri 08:00–17:00
+          <div className="text-[12px] text-white/50">
+            <span className="block text-white/65 text-[11px] uppercase tracking-widest mb-1">Office Hours</span>
+            Mon – Fri: 08:00 – 17:00
           </div>
+          <Link
+            href="/contact"
+            className="mt-1 inline-flex items-center justify-center px-5 py-2.5 bg-[#9A7B2F] text-white text-[12px] font-semibold tracking-wide hover:bg-[#c2a14d] transition-colors self-start"
+          >
+            Send a message
+          </Link>
         </div>
       </div>
 
       {/* Bottom strip */}
-      <div className="border-t border-gold/25">
-        <div className="mx-auto max-w-6xl px-6 py-4 flex flex-col md:flex-row items-center justify-between gap-3 text-[11px] text-white/50">
+      <div className="border-t border-white/10">
+        <div className="mx-auto max-w-6xl px-6 py-4 flex flex-col md:flex-row items-center justify-between gap-3 text-[11px] text-white/40">
           <p className="text-center md:text-left">
-            &copy; 2026 Erga Concepts (Pty) Ltd
-            <span className="mx-1.5 text-gold/50">|</span>
-            Trading as Erga Properties
+            © 2026 Erga Concepts (Pty) Ltd — Trading as Erga Properties
           </p>
 
-          <nav aria-label="Legal" className="flex flex-wrap justify-center gap-x-3 gap-y-1">
-            {legalLinks.map((link, i) => (
-              <span key={link.href} className="flex items-center gap-3">
-                {i > 0 && <span className="text-gold/40">|</span>}
-                <Link href={link.href} className="hover:text-gold transition-colors">
-                  {link.label}
-                </Link>
-              </span>
+          <nav aria-label="Legal" className="flex flex-wrap justify-center gap-x-4 gap-y-1">
+            {legalLinks.map((link) => (
+              <Link key={link.href} href={link.href} className="hover:text-white/70 transition-colors">
+                {link.label}
+              </Link>
             ))}
           </nav>
 
-          <p className="text-center md:text-right text-white/40">
-            Registered in South Africa &bull; 37 Kamferbos Street, Brackendowns, Alberton, 1448
+          <p className="text-center md:text-right text-white/30">
+            Registered in South Africa
           </p>
         </div>
       </div>
@@ -128,7 +173,6 @@ function LinkedInIcon() {
     </svg>
   );
 }
-
 function FacebookIcon() {
   return (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -136,7 +180,6 @@ function FacebookIcon() {
     </svg>
   );
 }
-
 function InstagramIcon() {
   return (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
