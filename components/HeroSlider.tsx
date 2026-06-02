@@ -60,7 +60,7 @@ export default function HeroSlider() {
   return (
     <div
       className="relative overflow-hidden w-full select-none"
-      style={{ height: "100svh", minHeight: "640px", maxHeight: "960px" }}
+      style={{ height: "580px", minHeight: "400px" }}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
@@ -84,7 +84,7 @@ export default function HeroSlider() {
       ))}
 
       {/* Main content */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full px-6 text-center text-white pb-40 md:pb-48">
+      <div className="relative z-10 flex flex-col items-center justify-center h-full px-6 text-center text-white pb-32 md:pb-36">
         <div className="max-w-4xl">
           {/* Eyebrow */}
           <div className="flex items-center justify-center gap-3 mb-6 animate-fade-in-up">
@@ -94,12 +94,12 @@ export default function HeroSlider() {
           </div>
 
           {/* Heading */}
-          <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-light mb-6 leading-tight whitespace-pre-line animate-fade-in-up animate-delay-100">
+          <h1 className="font-serif text-3xl md:text-5xl lg:text-6xl font-light mb-4 leading-tight whitespace-pre-line animate-fade-in-up animate-delay-100">
             {slides[current].heading}
           </h1>
 
           {/* Subheading */}
-          <p className="text-white/75 text-base md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-in-up animate-delay-200">
+          <p className="text-white/75 text-sm md:text-lg max-w-2xl mx-auto mb-7 leading-relaxed animate-fade-in-up animate-delay-200">
             {slides[current].subheading}
           </p>
 
@@ -122,7 +122,7 @@ export default function HeroSlider() {
       </div>
 
       {/* Just Property-style search bar — anchored above bottom */}
-      <div className="absolute bottom-12 left-0 right-0 z-20 px-4 md:px-8">
+      <div className="absolute bottom-6 left-0 right-0 z-20 px-4 md:px-8">
         <div className="mx-auto max-w-4xl">
           <div className="bg-white shadow-2xl">
             {/* Tabs */}
@@ -214,7 +214,7 @@ export default function HeroSlider() {
       </button>
 
       {/* Dot / dash indicators */}
-      <div className="absolute bottom-[calc(12rem+16px)] md:bottom-[calc(13rem+16px)] left-1/2 -translate-x-1/2 z-20 flex gap-2.5 items-center">
+      <div className="absolute bottom-[calc(9rem+16px)] md:bottom-[calc(10rem+16px)] left-1/2 -translate-x-1/2 z-20 flex gap-2.5 items-center">
         {slides.map((_, i) => (
           <button
             key={i}

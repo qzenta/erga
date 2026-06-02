@@ -23,14 +23,27 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 16px;
-  line-height: 1.7;
+  font-size: 15px;
+  line-height: 1.6;
+  font-weight: 400;
+  letter-spacing: -0.01em;
 }
 
 h1, h2, h3, h4, h5 {
   font-family: var(--font-serif);
-  letter-spacing: -0.01em;
-  line-height: 1.15;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  font-weight: 400;
+}
+
+/* Zillow-inspired: tighter, cleaner sans for UI text */
+button, input, select, textarea, label {
+  font-family: var(--font-sans);
+  font-size: 14px;
+}
+
+p {
+  line-height: 1.65;
 }
 
 @keyframes marquee {

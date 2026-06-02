@@ -72,37 +72,37 @@ const downloads = [
   {
     title: "Tenant Move-In Checklist",
     description: "A step-by-step checklist covering everything a new tenant needs to do before and on moving day.",
-    file: "tenant-checklist.pdf",
+    slug: "tenant-checklist",
     id: "tenant-application",
   },
   {
     title: "Tenant Code of Conduct",
     description: "Expected standards of behaviour and responsibilities for all tenants in Erga-managed properties.",
-    file: "tenant-code-of-conduct.pdf",
+    slug: "tenant-code-of-conduct",
     id: "lease-template",
   },
   {
     title: "Property Rules & Regulations",
     description: "General rules governing the use and occupation of Erga Properties residential and commercial units.",
-    file: "property-rules.pdf",
+    slug: "property-rules",
     id: undefined,
   },
   {
     title: "Managing Agent: What to Expect",
     description: "A plain-language guide for property owners on what a professional managing agent does and how Erga operates.",
-    file: "managing-agent-guide.pdf",
+    slug: "managing-agent-guide",
     id: "landlord-pack",
   },
   {
     title: "Rental Application Checklist",
     description: "Documents and information required when applying to rent an Erga property.",
-    file: "rental-application-checklist.pdf",
+    slug: "rental-application-checklist",
     id: undefined,
   },
   {
     title: "Lease Renewal Guide",
     description: "Understanding your rights and obligations when a lease comes up for renewal under South African law.",
-    file: "lease-renewal-guide.pdf",
+    slug: "lease-renewal-guide",
     id: undefined,
   },
 ];
@@ -243,7 +243,7 @@ export default function ToolsPage() {
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3 mt-10">
             {downloads.map((item) => (
               <div
-                key={item.file}
+                key={item.slug}
                 id={item.id}
                 className="flex flex-col border border-[#E5E7EB] bg-white p-7 hover:border-[#9A7B2F] transition-colors"
               >
@@ -252,14 +252,13 @@ export default function ToolsPage() {
                 </div>
                 <h3 className="font-serif text-lg text-[#1B2A4A] mb-2 leading-snug">{item.title}</h3>
                 <p className="text-[#1B2A4A]/60 text-sm leading-relaxed flex-1">{item.description}</p>
-                <a
-                  href={`/downloads/${item.file}`}
-                  download
+                <Link
+                  href={`/downloads/${item.slug}`}
                   className="mt-6 inline-flex items-center gap-2 bg-[#1B2A4A] text-white px-5 py-2.5 text-xs tracking-widest uppercase hover:bg-[#9A7B2F] transition-colors self-start"
                 >
                   <DownloadIcon small />
-                  Download PDF
-                </a>
+                  View &amp; Print
+                </Link>
               </div>
             ))}
           </div>
