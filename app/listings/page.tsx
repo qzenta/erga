@@ -205,7 +205,7 @@ export default function ListingsPage() {
       <section id="register" className="bg-white border-t border-[#E5E7EB]">
         <div className="mx-auto max-w-3xl px-6 py-16">
           <p className="text-[#9A7B2F] text-[12px] tracking-[0.2em] uppercase font-medium mb-2">Register your interest</p>
-          <h2 className="font-serif text-[30px] text-[#1B2A4A] mb-3 font-light">Register as a prospective tenant</h2>
+          <h2 className="text-[30px] text-[#1B2A4A] font-bold mb-3">Register as a prospective tenant</h2>
           <p className="text-[#1B2A4A]/60 mb-8 leading-relaxed">
             Not seeing the right unit? Register below and we'll contact you as soon as a suitable property becomes available in your preferred area.
           </p>
@@ -217,7 +217,7 @@ export default function ListingsPage() {
       <section className="bg-[#1B2A4A]">
         <div className="mx-auto max-w-4xl px-6 py-14 flex flex-col md:flex-row items-center justify-between gap-8">
           <div>
-            <h2 className="font-serif text-[26px] text-white mb-2">Are you a property owner?</h2>
+            <h2 className="text-[26px] text-white font-bold mb-2">Are you a property owner?</h2>
             <p className="text-white/65 leading-relaxed max-w-xl">
               Appoint Erga as your managing agent. We handle tenant placement, rent collection, and maintenance so you don't have to.
             </p>

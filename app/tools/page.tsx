@@ -189,7 +189,7 @@ export default function ToolsPage() {
                 <div className="text-[#9A7B2F] mb-4">
                   <CalcIcon />
                 </div>
-                <h3 className="font-serif text-lg text-[#1B2A4A] mb-2 leading-snug group-hover:text-[#9A7B2F] transition-colors">
+                <h3 className="text-[16px] font-bold text-[#1B2A4A] mb-2 leading-snug group-hover:text-[#9A7B2F] transition-colors">
                   {c.label}
                 </h3>
                 <p className="text-[#1B2A4A]/60 text-sm leading-relaxed flex-1">{c.desc}</p>
@@ -216,7 +216,7 @@ export default function ToolsPage() {
                 <div className="text-[#9A7B2F] mb-4">
                   <FormIcon />
                 </div>
-                <h3 className="font-serif text-lg text-[#1B2A4A] mb-2 leading-snug">{f.label}</h3>
+                <h3 className="text-[16px] font-bold text-[#1B2A4A] mb-2 leading-snug">{f.label}</h3>
                 <p className="text-[#1B2A4A]/60 text-sm leading-relaxed flex-1">{f.desc}</p>
                 <Link
                   href={f.href}
@@ -250,7 +250,7 @@ export default function ToolsPage() {
                 <div className="text-[#9A7B2F] mb-4">
                   <DownloadIcon />
                 </div>
-                <h3 className="font-serif text-lg text-[#1B2A4A] mb-2 leading-snug">{item.title}</h3>
+                <h3 className="text-[16px] font-bold text-[#1B2A4A] mb-2 leading-snug">{item.title}</h3>
                 <p className="text-[#1B2A4A]/60 text-sm leading-relaxed flex-1">{item.description}</p>
                 <Link
                   href={`/downloads/${item.slug}`}
@@ -279,11 +279,11 @@ export default function ToolsPage() {
               <div key={s.name} className="border border-[#E5E7EB] bg-white overflow-hidden">
                 <div className="bg-[#1B2A4A] px-6 py-4 flex items-start justify-between gap-4">
                   <div>
-                    <h3 className="text-white font-serif text-xl">{s.name}</h3>
+                    <h3 className="text-white font-bold text-[18px]">{s.name}</h3>
                     <p className="text-white/50 text-xs mt-0.5">{s.municipality} Municipality</p>
                   </div>
                   <div className="text-right shrink-0">
-                    <p className="text-[#9A7B2F] font-serif text-xl">{s.avgYield}</p>
+                    <p className="text-[#9A7B2F] font-bold text-[20px]">{s.avgYield}</p>
                     <p className="text-white/40 text-[10px] uppercase tracking-wider mt-0.5">Est. Yield</p>
                   </div>
                 </div>
@@ -327,7 +327,7 @@ function SectionHeader({ label, title, sub }: { label: string; title: string; su
         <span className="block w-6 h-px bg-[#9A7B2F]" />
         <span className="text-[#9A7B2F] text-xs tracking-[0.25em] uppercase font-medium">{label}</span>
       </div>
-      <h2 className="font-serif text-3xl text-[#1B2A4A] mb-3">{title}</h2>
+      <h2 className="text-[26px] font-bold text-[#1B2A4A] mb-3">{title}</h2>
       <p className="text-[#1B2A4A]/60 max-w-2xl">{sub}</p>
     </div>
   );

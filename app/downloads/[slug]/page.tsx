@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import PrintButton from "@/components/PrintButton";
 
 /* ─── Document definitions ─────────────────────────────────────────────── */
 
@@ -420,13 +421,7 @@ export default async function DownloadPage({ params }: { params: Promise<{ slug:
         </Link>
         <div className="flex items-center gap-3">
           <span className="text-[#1B2A4A]/50 text-[12px] hidden sm:block">Save as PDF: File → Print → Save as PDF</span>
-          <button
-            onClick={() => window.print()}
-            className="px-4 py-2 bg-[#1B2A4A] text-white text-[12px] font-medium hover:bg-[#9A7B2F] transition-colors print:hidden"
-            suppressHydrationWarning
-          >
-            Print / Save PDF
-          </button>
+          <PrintButton />
         </div>
       </div>
 

@@ -174,7 +174,7 @@ export default function ServicesPage() {
         <div className="absolute inset-0 bg-[#1B2A4A]/80" />
         <div className="relative z-10 flex flex-col items-center justify-center h-full px-6 text-center">
           <p className="text-[#9A7B2F] text-[12px] tracking-[0.2em] uppercase font-medium mb-3">Ready to hand over?</p>
-          <h2 className="font-serif text-[30px] text-white font-light mb-6">Let Erga manage your property</h2>
+          <h2 className="text-[30px] text-white font-bold mb-6">Let Erga manage your property</h2>
           <Link
             href="/contact"
             className="px-8 py-3.5 bg-[#9A7B2F] text-white text-[13px] font-medium tracking-wide hover:bg-[#c2a14d] transition-colors"
