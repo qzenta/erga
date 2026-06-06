@@ -162,7 +162,8 @@ export default function Footer() {
           </nav>
 
           <p className="text-center md:text-right text-white/30">
-            Registered in South Africa
+            Registered in South Africa &nbsp;·&nbsp;{" "}
+            <a href="https://qzenta.com" target="_blank" rel="noopener noreferrer" className="hover:text-white/50 transition-colors">Powered by Qzenta</a>
           </p>
         </div>
       </div>
