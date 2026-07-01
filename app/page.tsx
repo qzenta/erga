@@ -17,8 +17,8 @@ const services = [
   {
     title: "Electrical Services",
     body: "Fault finding, DB board upgrades, CoC issuing, rewiring, and emergency callouts. Licensed inspection, transparent quoting.",
-    image: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&q=80&auto=format&fit=crop",
-    alt: "Electrician working on a distribution board",
+    image: "/images/electrical/electrician-standing.jpg",
+    alt: "Erga electrician working on a distribution board",
     tag: "Book online",
     href: "/electrical",
     cta: "Explore electrical services",
@@ -49,18 +49,19 @@ export default function HomePage() {
       {/* Hero — electrical-led */}
       <section className="relative overflow-hidden" style={{ minHeight: "clamp(360px, 42vw, 480px)" }}>
         <Image
-          src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1600&q=80&auto=format&fit=crop"
-          alt="Licensed electrician inspecting a distribution board"
+          src="/images/electrical/panel-closeup.jpg"
+          alt="Distribution board wiring installed by Erga Electrical Services"
           fill
           priority
-          className="object-cover object-center"
+          className="object-cover"
+          style={{ objectPosition: "50% 22%" }}
           sizes="100vw"
         />
         <div
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(to right, rgba(27,42,74,0.94) 0%, rgba(27,42,74,0.88) 42%, rgba(27,42,74,0.55) 68%, rgba(27,42,74,0.25) 100%)",
+              "linear-gradient(to right, rgba(27,42,74,0.92) 0%, rgba(27,42,74,0.8) 42%, rgba(27,42,74,0.4) 68%, rgba(27,42,74,0.1) 100%)",
           }}
         />
         <div className="relative z-10 flex items-center h-full min-h-[inherit]">
@@ -159,8 +160,8 @@ export default function HomePage() {
       {/* CTA band — electrical primary, property management secondary */}
       <section className="relative py-16 overflow-hidden">
         <Image
-          src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1600&q=80&auto=format&fit=crop"
-          alt="Electrical distribution board"
+          src="/images/electrical/electrician-ladder.jpg"
+          alt="Erga electrician working on a distribution board"
           fill
           className="object-cover object-center"
           sizes="100vw"

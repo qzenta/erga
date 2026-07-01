@@ -5,7 +5,7 @@ const featuredPartners: { name: string; src?: string; href: string }[] = [
   {
     name: "Sikatrix Business Accountants",
     src: "/sikatrix_logo.png",
-    href: "https://www.sikatrix.co.za",
+    href: "https://www.sikatrix.com",
   },
   {
     name: "HeroPlumbers",

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import ElectricalBookingForm from "@/components/ElectricalBookingForm";
 
@@ -15,6 +16,12 @@ const howItWorks = [
   { n: "2", title: "We Inspect", body: "Your electrician assesses the job on-site." },
   { n: "3", title: "Get a Quote", body: "Clear, itemised pricing before any work starts." },
   { n: "4", title: "Accept or Decline", body: "Approve the work, or a callout fee applies if you decide not to proceed." },
+];
+
+const recentWork = [
+  { src: "/images/electrical/electrician-ladder.jpg", alt: "Erga electrician installing distribution board wiring" },
+  { src: "/images/electrical/panel-closeup.jpg", alt: "Completed distribution board wiring, close up" },
+  { src: "/images/electrical/ceiling-lighting.jpg", alt: "Ambient ceiling lighting installed by Erga Electrical Services" },
 ];
 
 const catalog = [
@@ -39,9 +46,21 @@ export default function ElectricalPage() {
         className="relative overflow-hidden flex items-center"
         style={{ minHeight: "clamp(320px, 38vw, 420px)", paddingTop: 60 }}
       >
+        <Image
+          src="/images/electrical/electrician-seated.jpg"
+          alt="Erga electrician at work on a distribution board"
+          fill
+          priority
+          className="object-cover"
+          style={{ objectPosition: "70% 30%" }}
+          sizes="100vw"
+        />
         <div
           className="absolute inset-0"
-          style={{ background: "linear-gradient(150deg, #1B2A4A 0%, #0D1829 100%)" }}
+          style={{
+            background:
+              "linear-gradient(150deg, rgba(27,42,74,0.85) 0%, rgba(13,24,41,0.75) 100%)",
+          }}
         />
         <div className="relative z-10 mx-auto max-w-screen-xl w-full px-6 py-16">
           <div className="max-w-[620px]">
@@ -107,6 +126,29 @@ export default function ElectricalPage() {
                 </div>
                 <h3 className="text-navy text-[15px] font-bold mb-1.5">{item.title}</h3>
                 <p className="text-navy/55 text-[13px] leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Recent Work */}
+      <section className="bg-white py-16 border-b border-[#E5E7EB]">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="mb-10 text-center">
+            <p className="text-gold text-[11px] tracking-[0.2em] uppercase font-semibold mb-2">On the job</p>
+            <h2 className="text-navy text-[28px] md:text-[34px] font-bold">Recent Work</h2>
+          </div>
+          <div className="grid gap-5 sm:grid-cols-3">
+            {recentWork.map((photo) => (
+              <div key={photo.src} className="relative overflow-hidden" style={{ height: 260 }}>
+                <Image
+                  src={photo.src}
+                  alt={photo.alt}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 640px) 100vw, 33vw"
+                />
               </div>
             ))}
           </div>
