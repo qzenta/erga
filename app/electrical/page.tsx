@@ -49,10 +49,10 @@ export default function ElectricalPage() {
               Erga Electrical Services
             </p>
             <h1 className="text-white font-bold leading-tight mb-4" style={{ fontSize: "clamp(28px, 3.6vw, 48px)" }}>
-              Alberton&apos;s Trusted Electrician — Book Online in Minutes
+              Meet Amos C. — Alberton&apos;s Trusted Electrician
             </h1>
             <p className="text-white/70 mb-8 leading-relaxed" style={{ fontSize: "clamp(14px, 1.4vw, 17px)" }}>
-              Licensed inspection, transparent quoting, no surprises. Serving Alberton for over a decade.
+              Licensed inspection, transparent quoting, no surprises. Amos has served Alberton for over a decade — book him online in minutes.
             </p>
             <Link
               href="#booking"
