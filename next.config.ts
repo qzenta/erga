@@ -9,6 +9,15 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/property-management",
+        destination: "/services",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

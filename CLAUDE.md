@@ -9,8 +9,8 @@ This is a **separate project** from Sikatrix.com (which lives at `C:\Users\Danie
 
 ## Location
 `C:\Users\Daniel\Documents\erga`
-- GitHub: `github.com/onukpad/erga` (private, renamed from erga-properties 2026-05-20)
-- Vercel project: `erga-properties` (daniels-projects-bc877f22)
+- GitHub: `github.com/qzenta/erga` (public) — confirmed from live Vercel deployment metadata 2026-07-01; earlier note about `onukpad/erga` (private) was stale
+- Vercel project: `erga-properties` (daniels-projects-bc877f22) — Git integration auto-deploys production on push to `master`, no manual `vercel --prod` needed
 
 ## Stack
 - **Next.js 16** (App Router)
@@ -39,14 +39,17 @@ Define these as Tailwind theme tokens (e.g. `navy`, `gold`) so they are used con
 - `app/api/tenant/route.ts` — tenant registration handler (notification only)
 
 ## Site architecture (added 2026-07-01 — Electrical Services)
-Electrical is now the site's primary offering, added per `erga-electrical-cc-brief.md`:
+Electrical is now the site's primary offering, added per `erga-electrical-cc-brief.md` (v1) and reconciled per a second, corrected brief the same day (v2 — see below):
 - `/` — homepage, rebranded to lead with electrical services
 - `/electrical` — flagship electrical services landing page (hero, how-it-works, service catalog, callout-fee FAQ, booking form)
-- `/property-management` — the former homepage content, moved here unchanged; demoted in nav but still live/indexed (no deindexing)
-- Nav is now flat: `Home | Electrical | Property Management | Contact` (`components/layout/Navbar.tsx`) — other routes (`/listings`, `/tools`, `/resources`, `/services`, `/about`, `/faqs`, etc.) remain live but are no longer surfaced in the top nav
+- `/property-management` — **retired 2026-07-01**; its content (featured listings, stats, partners) was folded into `/services` as sections, and a permanent redirect (`/property-management` → `/services`) was added in `next.config.ts` to preserve any SEO equity it picked up while briefly live
+- Nav is flat: `Home | Electrical | Property Management | Contact` (`components/layout/Navbar.tsx`) — no mega-menu (it was deleted, deliberately not rebuilt when a later brief assumed it still existed); "Property Management" points at `/services`. Other routes (`/listings`, `/tools`, `/resources`, `/about`, `/faqs`, etc.) remain live but are no longer surfaced in the top nav
+- Footer's dead `/rent` and `/buy` links (never real routes — pre-existing scaffolding from the old mega-menu) were removed 2026-07-01
 - `app/api/electrical-booking/route.ts` — validates the booking form, captures consent timestamp + IP (CPA disclosure trail), forwards to an n8n webhook
 - Env var `ELECTRICAL_BOOKING_WEBHOOK_URL` — n8n webhook endpoint (defaults to `https://n8n.qzenta.com/webhook/electrical-booking` if unset); the corresponding n8n workflow ("WF 5 — Electrical Booking Intake") and its dedicated Telegram channel + "Electrical Bookings" Notion DB still need to be built on the n8n side — this repo only builds and calls the webhook
 - Electrician sign-off resolved 2026-07-01 — hero copy on `/electrical` and `/` now leads with his name, "Amos C." (`app/electrical/page.tsx`, `app/page.tsx`)
+
+**Note on the two briefs:** the first brief assumed a simple 4-route site; the second (received later the same day) assumed the pre-existing mega-menu was still live and wanted Property Management folded into a `/services` mega-panel column. Since the flat nav was already shipped to production between the two briefs, the mega-menu was **not** rebuilt — only the "fold Property Management into `/services`" part of brief v2 was applied, on top of the already-flat nav from brief v1.
 
 ## Dev workflow
 ```

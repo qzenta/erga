@@ -7,14 +7,15 @@ import ErgoLogo from "@/components/ui/ErgoLogo";
 
 /* ─── Nav data — trades-first ordering per CC brief ──────────────────────
    Home | Electrical | Property Management | Contact
-   Property Management stays live and indexed — just deprioritized in
-   visual hierarchy, not removed or redirected (preserves existing SEO
-   equity). Other routes (listings, tools, resources, etc.) remain live
-   but are no longer surfaced in the top nav.                             */
+   "Property Management" points at /services — the standalone
+   /property-management page was retired and 301-redirected there once its
+   content was folded into /services as a section (see next.config.ts).
+   Other routes (listings, tools, resources, etc.) remain live but are no
+   longer surfaced in the top nav.                                        */
 const NAV = [
   { label: "Home", href: "/" },
   { label: "Electrical", href: "/electrical" },
-  { label: "Property Management", href: "/property-management" },
+  { label: "Property Management", href: "/services" },
   { label: "Contact", href: "/contact" },
 ];
 

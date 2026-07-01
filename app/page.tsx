@@ -29,7 +29,7 @@ const services = [
     image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80&auto=format&fit=crop",
     alt: "Residential building managed by Erga",
     tag: "For owners",
-    href: "/property-management",
+    href: "/services",
     cta: "View property management",
   },
 ];
@@ -86,7 +86,7 @@ export default function HomePage() {
                   Book a Callout
                 </Link>
                 <Link
-                  href="/property-management"
+                  href="/services"
                   className="px-8 py-3.5 border border-white/30 text-white text-[13px] font-semibold tracking-wide hover:bg-white hover:text-[#1B2A4A] transition-colors text-center"
                 >
                   Property Management
@@ -178,7 +178,7 @@ export default function HomePage() {
             <Link href="/electrical#booking" className="px-8 py-3.5 bg-[#9A7B2F] text-white text-[13px] font-semibold tracking-wide hover:bg-[#c2a14d] transition-colors">
               Book a Callout
             </Link>
-            <Link href="/property-management" className="px-8 py-3.5 border border-white/30 text-white text-[13px] font-semibold tracking-wide hover:bg-white hover:text-[#1B2A4A] transition-colors">
+            <Link href="/services" className="px-8 py-3.5 border border-white/30 text-white text-[13px] font-semibold tracking-wide hover:bg-white hover:text-[#1B2A4A] transition-colors">
               Property Management
             </Link>
           </div>
