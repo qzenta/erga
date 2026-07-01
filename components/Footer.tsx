@@ -3,6 +3,8 @@ import ErgoLogo from "@/components/ui/ErgoLogo";
 
 const navLinks = [
   { href: "/", label: "Home" },
+  { href: "/electrical", label: "Electrical Services" },
+  { href: "/property-management", label: "Property Management" },
   { href: "/listings", label: "Listings" },
   { href: "/rent", label: "Rent" },
   { href: "/buy", label: "Buy" },

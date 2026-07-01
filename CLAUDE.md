@@ -38,6 +38,16 @@ Define these as Tailwind theme tokens (e.g. `navy`, `gold`) so they are used con
 - `app/api/contact/route.ts` — contact form handler (notification + auto-reply)
 - `app/api/tenant/route.ts` — tenant registration handler (notification only)
 
+## Site architecture (added 2026-07-01 — Electrical Services)
+Electrical is now the site's primary offering, added per `erga-electrical-cc-brief.md`:
+- `/` — homepage, rebranded to lead with electrical services
+- `/electrical` — flagship electrical services landing page (hero, how-it-works, service catalog, callout-fee FAQ, booking form)
+- `/property-management` — the former homepage content, moved here unchanged; demoted in nav but still live/indexed (no deindexing)
+- Nav is now flat: `Home | Electrical | Property Management | Contact` (`components/layout/Navbar.tsx`) — other routes (`/listings`, `/tools`, `/resources`, `/services`, `/about`, `/faqs`, etc.) remain live but are no longer surfaced in the top nav
+- `app/api/electrical-booking/route.ts` — validates the booking form, captures consent timestamp + IP (CPA disclosure trail), forwards to an n8n webhook
+- Env var `ELECTRICAL_BOOKING_WEBHOOK_URL` — n8n webhook endpoint (defaults to `https://n8n.qzenta.com/webhook/electrical-booking` if unset); the corresponding n8n workflow ("WF 5 — Electrical Booking Intake") and its dedicated Telegram channel + "Electrical Bookings" Notion DB still need to be built on the n8n side — this repo only builds and calls the webhook
+- Trust copy on the `/electrical` hero currently leads with tenure ("over a decade"), not the electrician's name, pending a sign-off conversation with him about being the public face of the lead-gen platform (see brief section 8) — swap in name/credentials in `app/electrical/page.tsx` and `app/page.tsx` once confirmed
+
 ## Dev workflow
 ```
 cd C:\Users\Daniel\Documents\erga
