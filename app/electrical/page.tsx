@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import ElectricalBookingForm from "@/components/ElectricalBookingForm";
+import TrustStrip from "@/components/TrustStrip";
 
 export const metadata: Metadata = {
   title: {
@@ -51,19 +52,105 @@ const faqs = [
   },
 ];
 
-const catalog = [
-  { title: "Fault Finding & Repairs", desc: "Diagnosing and fixing electrical faults, trips, and outages." },
-  { title: "DB Board Installation & Upgrades", desc: "Distribution board installation, upgrades, and compliance work." },
-  { title: "Certificate of Compliance (CoC)", desc: "CoC issuing for property sales, transfers, and insurance." },
-  { title: "Home & Office Rewiring", desc: "Full or partial rewiring for homes and commercial premises." },
-  { title: "Plug Points, Lights & Switches", desc: "Installation of plug points, light fittings, and switches." },
-  { title: "Geyser & Stove Connections", desc: "Electrical connections for geysers and stoves." },
-  { title: "Ceiling Fan Installation", desc: "Supply and installation of ceiling fans." },
-  { title: "Electric Fence & Alarm Wiring", desc: "Wiring for electric fences and alarm systems." },
-  { title: "Data Cabling / Network Points", desc: "Structured cabling and network point installation." },
-  { title: "Surge Protection Installation", desc: "Surge protection to safeguard your appliances and equipment." },
-  { title: "Emergency Callouts", desc: "Fast response for urgent electrical issues." },
+const catalog: { title: string; desc: string; icon: IconName }[] = [
+  {
+    title: "Fault Finding & Repairs",
+    desc: "Tripping breakers, dead sockets, flickering lights — we trace the cause and fix it properly, first time.",
+    icon: "search",
+  },
+  {
+    title: "DB Board Installation & Upgrades",
+    desc: "New distribution boards, upgrades of overloaded boards, and re-organisation to current safety standards.",
+    icon: "panel",
+  },
+  {
+    title: "Certificate of Compliance (CoC)",
+    desc: "CoC issuing for property sales, transfers, and insurance — inspection and remedial work included.",
+    icon: "certificate",
+  },
+  {
+    title: "Home & Office Rewiring",
+    desc: "Full or partial rewiring of older homes and commercial premises, done neatly with minimal disruption.",
+    icon: "cable",
+  },
+  {
+    title: "Plug Points, Lights & Switches",
+    desc: "New plug points, light fittings, dimmers, and switches — installed, tested, and finished cleanly.",
+    icon: "plug",
+  },
+  {
+    title: "Geyser & Stove Connections",
+    desc: "Safe, compliant electrical connections for geysers, stoves, ovens, and hobs.",
+    icon: "flame",
+  },
+  {
+    title: "Ceiling Fan Installation",
+    desc: "Supply and installation of ceiling fans, including switching and speed control.",
+    icon: "fan",
+  },
+  {
+    title: "Electric Fence & Alarm Wiring",
+    desc: "Wiring for electric fences and alarm systems, neatly routed and fully tested.",
+    icon: "shield",
+  },
+  {
+    title: "Data Cabling / Network Points",
+    desc: "Structured cabling and network points for home offices and small businesses.",
+    icon: "network",
+  },
+  {
+    title: "Surge Protection Installation",
+    desc: "Surge arrestors fitted at the DB board to protect appliances and sensitive electronics.",
+    icon: "surge",
+  },
+  {
+    title: "Emergency Callouts",
+    desc: "Urgent electrical faults get priority — tell us it's an emergency when you book.",
+    icon: "clock",
+  },
 ];
+
+type IconName =
+  | "search" | "panel" | "certificate" | "cable" | "plug" | "flame"
+  | "fan" | "shield" | "network" | "surge" | "clock";
+
+function ServiceIcon({ name }: { name: IconName }) {
+  const common = {
+    width: 22,
+    height: 22,
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 1.8,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+    "aria-hidden": true,
+  };
+  switch (name) {
+    case "search":
+      return <svg {...common}><circle cx="11" cy="11" r="7" /><path d="M21 21l-4.3-4.3M11 8v3l2 1.5" /></svg>;
+    case "panel":
+      return <svg {...common}><rect x="4" y="3" width="16" height="18" rx="1.5" /><path d="M4 9h16M9 13h.01M9 17h.01M13 13h4M13 17h4" /></svg>;
+    case "certificate":
+      return <svg {...common}><circle cx="12" cy="9" r="6" /><path d="M9 14.5L7.5 22l4.5-2.5L16.5 22 15 14.5M10 9l1.5 1.5L14.5 7.5" /></svg>;
+    case "cable":
+      return <svg {...common}><path d="M4 6h7a4 4 0 0 1 4 4v4a4 4 0 0 0 4 4h1M4 6l3-3M4 6l3 3" /></svg>;
+    case "plug":
+      return <svg {...common}><path d="M9 2v6M15 2v6M6 8h12v3a6 6 0 0 1-6 6 6 6 0 0 1-6-6V8zM12 17v5" /></svg>;
+    case "flame":
+      return <svg {...common}><path d="M12 22c4 0 7-2.7 7-6.7 0-3.6-2.5-6-4.2-8.5C13.6 5 13 3.5 13 2c-3 2-4.4 4.5-4.4 6.7 0 1 .2 1.8.5 2.6-1-.5-1.8-1.4-2.3-2.5C5.7 10.2 5 12 5 13.8 5 18.6 8.5 22 12 22z" /></svg>;
+    case "fan":
+      return <svg {...common}><circle cx="12" cy="12" r="2" /><path d="M12 10c0-4 1.5-6 3.5-6S19 6 17 8.5 12 10 12 10zM14 12c4 0 6 1.5 6 3.5S18 19 15.5 17 14 12 14 12zM12 14c0 4-1.5 6-3.5 6S5 18 7 15.5 12 14 12 14zM10 12c-4 0-6-1.5-6-3.5S6 5 8.5 7 10 12 10 12z" /></svg>;
+    case "shield":
+      return <svg {...common}><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10zM12 8v5M12 15.5h.01" /></svg>;
+    case "network":
+      return <svg {...common}><rect x="9" y="2" width="6" height="5" rx="1" /><rect x="2" y="17" width="6" height="5" rx="1" /><rect x="16" y="17" width="6" height="5" rx="1" /><path d="M12 7v4M5 17v-3h14v3M12 11v3" /></svg>;
+    case "surge":
+      return <svg {...common}><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></svg>;
+    case "clock":
+      return <svg {...common}><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3.5 2" /></svg>;
+  }
+}
 
 export default function ElectricalPage() {
   return (
@@ -111,6 +198,9 @@ export default function ElectricalPage() {
         </div>
       </section>
 
+      {/* Trust strip */}
+      <TrustStrip />
+
       {/* How It Works */}
       <section className="bg-white border-b border-[#E5E7EB] py-16">
         <div className="mx-auto max-w-5xl px-6">
@@ -147,16 +237,24 @@ export default function ElectricalPage() {
             {catalog.map((item) => (
               <div
                 key={item.title}
-                className="bg-white border border-[#E5E7EB] p-6 flex flex-col items-start"
+                className="group bg-white border border-[#E5E7EB] hover:border-[#9A7B2F] hover:shadow-md transition-all duration-200 p-6 flex flex-col items-start"
               >
-                <div className="w-10 h-10 rounded-full bg-[#F8F8F6] flex items-center justify-center text-gold mb-4">
-                  <BoltIcon />
+                <div className="w-11 h-11 rounded-full bg-[#F8F8F6] border border-[#9A7B2F]/25 flex items-center justify-center text-gold mb-4">
+                  <ServiceIcon name={item.icon} />
                 </div>
-                <h3 className="text-navy text-[15px] font-bold mb-1.5">{item.title}</h3>
-                <p className="text-navy/55 text-[13px] leading-relaxed">{item.desc}</p>
+                <h3 className="text-navy text-[16px] font-bold mb-2 leading-snug">{item.title}</h3>
+                <p className="text-navy/60 text-[13.5px] leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
+
+          <p className="mt-10 text-center text-navy/55 text-[14px]">
+            Don&apos;t see your job listed?{" "}
+            <Link href="#booking" className="text-gold underline underline-offset-4 hover:text-navy transition-colors">
+              Describe it in a booking
+            </Link>{" "}
+            — if it&apos;s electrical, we&apos;ll quote it.
+          </p>
         </div>
       </section>
 
@@ -215,13 +313,5 @@ export default function ElectricalPage() {
         </div>
       </section>
     </>
-  );
-}
-
-function BoltIcon() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-    </svg>
   );
 }
