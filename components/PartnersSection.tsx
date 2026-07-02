@@ -20,25 +20,6 @@ const featuredPartners: { name: string; src?: string; href: string }[] = [
   },
 ];
 
-/* ─── Industry network — SA property ecosystem companies ──────────────── */
-const industryNetwork: { name: string; category: string; color: string }[] = [
-  { name: "ooba Home Loans",        category: "Bond Originator",       color: "#E8341C" },
-  { name: "BetterBond",             category: "Bond Originator",       color: "#00529B" },
-  { name: "TPN Credit Bureau",      category: "Rental Credit Bureau",  color: "#2D7D46" },
-  { name: "PayProp",                category: "Rental Payments",       color: "#5B2D8E" },
-  { name: "Lightstone Property",    category: "Property Data",         color: "#1A5276" },
-  { name: "Absa Home Loans",        category: "Property Finance",      color: "#DC0000" },
-  { name: "Santam",                 category: "Property Insurance",    color: "#003DA5" },
-  { name: "Seeff Properties",       category: "Real Estate Network",   color: "#C0392B" },
-  { name: "RE/MAX SA",              category: "Real Estate Network",   color: "#003087" },
-  { name: "PPRA",                   category: "Industry Regulator",    color: "#1B2A4A" },
-  { name: "TransUnion",             category: "Credit Bureau",         color: "#E8860A" },
-  { name: "Standard Bank",          category: "Property Finance",      color: "#007AC2" },
-];
-
-/* Duplicate for seamless infinite scroll */
-const marqueeItems = [...industryNetwork, ...industryNetwork];
-
 export default function PartnersSection() {
   return (
     <section className="bg-white border-t border-[#E5E7EB] py-14">
@@ -79,38 +60,6 @@ export default function PartnersSection() {
               </a>
             );
           })}
-        </div>
-      </div>
-
-      {/* ── Industry network marquee ─────────────────────────────────── */}
-      <div className="border-t border-[#E5E7EB] pt-10">
-        <p className="text-center text-[11px] tracking-[0.2em] uppercase text-[#1B2A4A]/35 font-medium mb-7 px-6">
-          Property ecosystem — industry network
-        </p>
-
-        <div className="overflow-hidden marquee-wrapper">
-          <div className="flex items-stretch marquee-track">
-            {marqueeItems.map((company, i) => (
-              <div key={i} className="flex-shrink-0 mx-2.5">
-                <div
-                  className="flex flex-col items-center justify-center bg-white border border-[#E5E7EB] hover:border-[#9A7B2F] transition-colors px-6 py-4 cursor-default"
-                  style={{ width: 172, height: 80 }}
-                >
-                  {/* Coloured accent bar */}
-                  <div
-                    className="w-6 h-0.5 mb-2 rounded-full"
-                    style={{ background: company.color }}
-                  />
-                  <p className="font-bold text-[#1B2A4A] text-[13px] leading-tight text-center">
-                    {company.name}
-                  </p>
-                  <p className="text-[#1B2A4A]/40 text-[10px] mt-1 tracking-wide text-center leading-tight">
-                    {company.category}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
     </section>

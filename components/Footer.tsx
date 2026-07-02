@@ -2,8 +2,8 @@ import Link from "next/link";
 import ErgoLogo from "@/components/ui/ErgoLogo";
 
 const navLinks = [
-  { href: "/", label: "Home" },
   { href: "/electrical", label: "Electrical Services" },
+  { href: "/", label: "Home" },
   { href: "/services", label: "Property Management" },
   { href: "/listings", label: "Listings" },
   { href: "/about", label: "About Us" },
@@ -11,10 +11,10 @@ const navLinks = [
 ];
 
 const serviceLinks = [
-  { href: "/services#portfolio", label: "Portfolio Management" },
-  { href: "/services#managing-agent", label: "Managing Agent" },
-  { href: "/services#tenant-placement", label: "Tenant Placement" },
-  { href: "/services#collections", label: "Rental Collections" },
+  { href: "/electrical#booking", label: "Book a Callout" },
+  { href: "/electrical#services", label: "CoC Certificates" },
+  { href: "/electrical#services", label: "Emergency Callouts" },
+  { href: "/services#property-management", label: "Managing Agent" },
   { href: "/contact", label: "Get a Quote" },
   { href: "/listings#register", label: "Apply as Tenant" },
 ];
@@ -51,8 +51,8 @@ export default function Footer() {
             Alberton, Gauteng
           </p>
           <p className="text-white/40 text-[11px] leading-relaxed">
-            Professional property management<br />
-            across Gauteng since 2015.
+            Trusted property management and<br />
+            electrical services across Gauteng.
           </p>
           {/* Socials */}
           <div className="flex items-center gap-3 mt-1">

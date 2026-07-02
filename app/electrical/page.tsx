@@ -105,7 +105,7 @@ export default function ElectricalPage() {
       </section>
 
       {/* Services catalog */}
-      <section className="bg-[#F8F8F6] py-16 border-b border-[#E5E7EB]">
+      <section id="services" className="bg-[#F8F8F6] py-16 border-b border-[#E5E7EB]">
         <div className="mx-auto max-w-6xl px-6">
           <div className="mb-10 text-center">
             <p className="text-gold text-[11px] tracking-[0.2em] uppercase font-semibold mb-2">What we do</p>
