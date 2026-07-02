@@ -86,6 +86,7 @@ export default function ContactForm() {
             Select one
           </option>
           <option value="General">General</option>
+          <option value="Electrical Services">Electrical Services</option>
           <option value="Tenant Enquiry">Tenant Enquiry</option>
           <option value="Managing Agent">Managing Agent</option>
           <option value="Other">Other</option>

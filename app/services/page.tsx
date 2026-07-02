@@ -10,43 +10,6 @@ export const metadata: Metadata = {
     "From managing agent mandates to direct rental portfolio management, Erga Properties delivers accountable, transparent property services across Gauteng.",
 };
 
-const featured = [
-  {
-    image: "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&q=80&auto=format&fit=crop",
-    alt: "3-bedroom home Alberton",
-    type: "Residential",
-    title: "3-Bedroom Family Home",
-    location: "Alberton, Ekurhuleni",
-    rent: "R 12 500",
-    beds: 3, baths: 2, sqm: 145,
-  },
-  {
-    image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&q=80&auto=format&fit=crop",
-    alt: "2-bedroom apartment Kempton Park",
-    type: "Sectional Title",
-    title: "2-Bedroom Apartment",
-    location: "Kempton Park, Ekurhuleni",
-    rent: "R 8 500",
-    beds: 2, baths: 1, sqm: 82,
-  },
-  {
-    image: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&q=80&auto=format&fit=crop",
-    alt: "Office suite Glenanda",
-    type: "Commercial",
-    title: "Open-Plan Office Suite",
-    location: "Glenanda, Johannesburg",
-    rent: "R 22 000",
-    beds: 0, baths: 2, sqm: 210,
-  },
-];
-
-const stats = [
-  { value: "10+", label: "Years in property" },
-  { value: "50+", label: "Properties managed" },
-  { value: "200+", label: "Tenants served" },
-  { value: "100%", label: "Gauteng-wide" },
-];
-
 const propertyManagement = {
   body: "Erga acts as managing agent for property owners who want hands-off, accountable management — from tenant sourcing and vetting through to monthly financial reporting. We also manage a small owned portfolio directly, held to the same standard.",
   image: "https://images.unsplash.com/photo-1560185007-c5ca9d2c014d?w=800&q=80&auto=format&fit=crop",
@@ -178,60 +141,8 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Featured listings */}
+      {/* About */}
       <section className="bg-[#F8F8F6] py-16 border-t border-[#E5E7EB]">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="flex items-center justify-between mb-10">
-            <div>
-              <p className="text-[#9A7B2F] text-[11px] tracking-[0.2em] uppercase font-semibold mb-2">Available now</p>
-              <h2 className="text-[#1B2A4A] text-[28px] md:text-[34px] font-bold">Featured properties</h2>
-            </div>
-            <Link href="/listings" className="hidden md:flex items-center gap-1.5 text-[#9A7B2F] text-[13px] font-semibold hover:underline">
-              View all →
-            </Link>
-          </div>
-
-          <div className="grid gap-5 md:grid-cols-3">
-            {featured.map((p) => (
-              <Link
-                key={p.title}
-                href="/listings"
-                className="group block bg-white border border-[#E5E7EB] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 overflow-hidden"
-              >
-                <div className="relative overflow-hidden" style={{ height: 205 }}>
-                  <Image
-                    src={p.image}
-                    alt={p.alt}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
-                  <span className="absolute top-3 left-3 bg-[#1B2A4A] text-white text-[11px] font-semibold px-2.5 py-1">
-                    {p.type}
-                  </span>
-                </div>
-                <div className="px-5 py-4">
-                  <div className="flex items-start justify-between gap-2 mb-1">
-                    <h3 className="font-bold text-[#1B2A4A] text-[15px] leading-snug">{p.title}</h3>
-                    <div className="text-right shrink-0">
-                      <p className="font-bold text-[#9A7B2F] text-[18px] leading-none">{p.rent}</p>
-                      <p className="text-[11px] text-[#1B2A4A]/40 mt-0.5">/month</p>
-                    </div>
-                  </div>
-                  <p className="text-[#1B2A4A]/50 text-[12px]">{p.location}</p>
-                </div>
-              </Link>
-            ))}
-          </div>
-
-          <div className="mt-5 md:hidden text-center">
-            <Link href="/listings" className="text-[#9A7B2F] text-[13px] font-semibold hover:underline">View all listings →</Link>
-          </div>
-        </div>
-      </section>
-
-      {/* About / stats */}
-      <section className="bg-white py-16 border-t border-[#E5E7EB]">
         <div className="mx-auto max-w-6xl px-6 grid gap-14 md:grid-cols-2 items-center">
           <div className="relative">
             <div className="relative overflow-hidden" style={{ aspectRatio: "4/3" }}>
@@ -244,8 +155,8 @@ export default function ServicesPage() {
               />
             </div>
             <div className="absolute -bottom-5 -right-4 bg-[#1B2A4A] text-white px-6 py-5 shadow-xl hidden md:block">
-              <p className="font-bold text-[40px] text-[#9A7B2F] leading-none">50+</p>
-              <p className="text-white/60 text-[12px] mt-1">Properties managed</p>
+              <p className="font-bold text-[40px] text-[#9A7B2F] leading-none">10+</p>
+              <p className="text-white/60 text-[12px] mt-1">Years in property</p>
             </div>
           </div>
 
@@ -258,14 +169,18 @@ export default function ServicesPage() {
               Financial discipline, hands-on oversight, transparent reporting, and reliable rent collection — so your investment performs the way it should.
             </p>
 
-            <div className="grid grid-cols-2 gap-5 mb-8">
-              {stats.map((s) => (
-                <div key={s.label} className="border-l-2 border-[#9A7B2F]/40 pl-4">
-                  <p className="font-bold text-[#9A7B2F] text-[28px] leading-none">{s.value}</p>
-                  <p className="text-[#1B2A4A]/55 text-[12px] mt-1">{s.label}</p>
-                </div>
+            <ul className="space-y-3 mb-8">
+              {[
+                "Over a decade of hands-on property experience",
+                "Serving owners and tenants across Gauteng",
+                "Transparent monthly reporting, every month",
+              ].map((point) => (
+                <li key={point} className="flex items-start gap-3 text-[14px] text-[#1B2A4A]/70">
+                  <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#9A7B2F] shrink-0" />
+                  {point}
+                </li>
               ))}
-            </div>
+            </ul>
 
             <Link href="/about" className="inline-flex items-center gap-2 text-[#1B2A4A] text-[14px] font-semibold hover:text-[#9A7B2F] transition-colors group">
               Learn more about us
