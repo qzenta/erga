@@ -1,5 +1,15 @@
 import Link from "next/link";
+import Image from "next/image";
 import ErgoLogo from "@/components/ui/ErgoLogo";
+
+/* ─── Confirmed partners — prominent placement, they're special ──────────
+   Sikatrix intentionally left out pending Daniel's confirmation (2 Jul
+   2026) — re-add once he signs off. Real logo asset for HeroPlumbers only;
+   Erga Electrical Services is an internal link, shown as a wordmark.      */
+const footerPartners: { name: string; src?: string; href: string }[] = [
+  { name: "HeroPlumbers", src: "/heroplumbers_logo.png", href: "https://www.heroplumbers.co.za" },
+  { name: "Erga Electrical Services", href: "/electrical" },
+];
 
 const navLinks = [
   { href: "/electrical", label: "Electrical Services" },
@@ -34,6 +44,47 @@ export default function Footer() {
   return (
     <footer className="mt-auto bg-[#1B2A4A] text-white">
       <div className="h-0.5 bg-[#9A7B2F]" />
+
+      {/* Our Partners — prominent, distinct band (Sikatrix pending confirmation) */}
+      <div className="border-b border-white/10 bg-white/[0.04]">
+        <div className="mx-auto max-w-6xl px-6 py-8">
+          <p className="text-center text-[11px] tracking-[0.2em] uppercase text-[#9A7B2F] font-semibold mb-5">
+            Our Partners
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-5">
+            {footerPartners.map((p) => {
+              const external = p.href.startsWith("http");
+              return (
+                <a
+                  key={p.name}
+                  href={p.href}
+                  target={external ? "_blank" : undefined}
+                  rel={external ? "noopener noreferrer" : undefined}
+                  aria-label={p.name}
+                  className="group flex items-center justify-center bg-white border border-white/10 hover:border-[#9A7B2F] transition-colors"
+                  style={{ width: 210, height: 92, padding: "14px 24px" }}
+                >
+                  {p.src ? (
+                    <div className="relative w-full h-full">
+                      <Image
+                        src={p.src}
+                        alt={p.name}
+                        fill
+                        className="object-contain group-hover:opacity-75 transition-opacity"
+                        sizes="180px"
+                      />
+                    </div>
+                  ) : (
+                    <span className="text-center text-[#1B2A4A] text-[14px] font-bold leading-snug group-hover:text-[#9A7B2F] transition-colors">
+                      {p.name}
+                    </span>
+                  )}
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      </div>
 
       {/* 4-column grid */}
       <div className="mx-auto max-w-6xl px-6 py-12 grid gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 items-start">
