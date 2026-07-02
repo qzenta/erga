@@ -19,9 +19,36 @@ const howItWorks = [
 ];
 
 const recentWork = [
-  { src: "/images/electrical/electrician-ladder.jpg", alt: "Erga electrician installing distribution board wiring" },
+  { src: "/images/electrical/electrician-seated.jpg", alt: "Erga electrician working on distribution board wiring" },
   { src: "/images/electrical/panel-closeup.jpg", alt: "Completed distribution board wiring, close up" },
   { src: "/images/electrical/ceiling-lighting.jpg", alt: "Ambient ceiling lighting installed by Erga Electrical Services" },
+];
+
+const faqs = [
+  {
+    q: "What happens if I don't accept the quote?",
+    a: "A callout fee of R450 applies to cover the electrician's travel and inspection time. This is disclosed and agreed to when you book, before any visit is scheduled.",
+  },
+  {
+    q: "Is it waived if I go ahead with the work?",
+    a: "Yes — if you approve the quote, the R450 is absorbed into your final invoice. You only pay it standalone if you decline.",
+  },
+  {
+    q: "How is the work priced?",
+    a: "Every job is quoted individually after an on-site inspection. You receive clear, itemised pricing before any work starts — nothing begins until you approve the quote.",
+  },
+  {
+    q: "Which areas do you cover?",
+    a: "We're based in Alberton and serve the greater Gauteng area. If you're unsure whether we reach you, mention your suburb when booking and we'll confirm.",
+  },
+  {
+    q: "Do you issue Certificates of Compliance (CoC)?",
+    a: "Yes — CoC issuing for property sales, transfers, and insurance is one of our core services. Mention that you need a CoC when you book.",
+  },
+  {
+    q: "How soon will you get back to me?",
+    a: "We respond to all bookings within one business day to confirm a time. For urgent electrical issues, say so in your booking and we'll prioritise it.",
+  },
 ];
 
 const catalog = [
@@ -47,19 +74,20 @@ export default function ElectricalPage() {
         style={{ minHeight: "clamp(320px, 38vw, 420px)", paddingTop: 60 }}
       >
         <Image
-          src="/images/electrical/electrician-seated.jpg"
-          alt="Erga electrician at work on a distribution board"
+          src="/images/electrical/electrician-ladder.jpg"
+          alt="Amos C., Erga's electrician, wiring a distribution board"
           fill
           priority
           className="object-cover"
-          style={{ objectPosition: "70% 30%" }}
+          style={{ objectPosition: "78% 28%" }}
           sizes="100vw"
         />
+        {/* Left-heavy gradient: dark where the text sits, lighter on the right so Amos's face stays visible */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(150deg, rgba(27,42,74,0.85) 0%, rgba(13,24,41,0.75) 100%)",
+              "linear-gradient(to right, rgba(13,24,41,0.94) 0%, rgba(27,42,74,0.88) 45%, rgba(27,42,74,0.45) 75%, rgba(27,42,74,0.2) 100%)",
           }}
         />
         <div className="relative z-10 mx-auto max-w-screen-xl w-full px-6 py-16">
@@ -155,34 +183,21 @@ export default function ElectricalPage() {
         </div>
       </section>
 
-      {/* Callout Fee FAQ */}
+      {/* FAQ */}
       <section id="callout-faq" className="bg-white py-16 border-b border-[#E5E7EB]">
         <div className="mx-auto max-w-3xl px-6">
           <div className="text-center mb-10">
-            <p className="text-gold text-[11px] tracking-[0.2em] uppercase font-semibold mb-2">Callout fee</p>
-            <h2 className="text-navy text-[28px] font-bold">Callout Fee FAQ</h2>
+            <p className="text-gold text-[11px] tracking-[0.2em] uppercase font-semibold mb-2">Good to know</p>
+            <h2 className="text-navy text-[28px] font-bold">Frequently Asked Questions</h2>
           </div>
 
           <div className="divide-y divide-gold/20 border border-gold/20">
-            <div className="px-6 py-6">
-              <h3 className="font-bold text-navy text-[15px] mb-2">
-                What happens if I don&apos;t accept the quote?
-              </h3>
-              <p className="text-navy/70 leading-relaxed text-[14px]">
-                A callout fee of R450 applies to cover the electrician&apos;s travel and
-                inspection time. This is disclosed and agreed to when you book, before
-                any visit is scheduled.
-              </p>
-            </div>
-            <div className="px-6 py-6">
-              <h3 className="font-bold text-navy text-[15px] mb-2">
-                Is it waived if I go ahead with the work?
-              </h3>
-              <p className="text-navy/70 leading-relaxed text-[14px]">
-                Yes — if you approve the quote, the R450 is absorbed into your final
-                invoice. You only pay it standalone if you decline.
-              </p>
-            </div>
+            {faqs.map((item) => (
+              <div key={item.q} className="px-6 py-6">
+                <h3 className="font-bold text-navy text-[15px] mb-2">{item.q}</h3>
+                <p className="text-navy/70 leading-relaxed text-[14px]">{item.a}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>

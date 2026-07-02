@@ -17,11 +17,12 @@ const services = [
   {
     title: "Electrical Services",
     body: "Fault finding, DB board upgrades, CoC issuing, rewiring, and emergency callouts. Licensed inspection, transparent quoting.",
-    image: "/images/electrical/electrician-standing.jpg",
-    alt: "Erga electrician working on a distribution board",
+    image: "/images/electrical/electrician-ladder.jpg",
+    alt: "Amos C., Erga's electrician, wiring a distribution board",
     tag: "Book online",
     href: "/electrical",
     cta: "Explore electrical services",
+    pos: "70% 25%",
   },
   {
     title: "Property Management",
@@ -31,6 +32,7 @@ const services = [
     tag: "For owners",
     href: "/services",
     cta: "View property management",
+    pos: "50% 50%",
   },
 ];
 
@@ -61,7 +63,7 @@ export default function HomePage() {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(to right, rgba(27,42,74,0.92) 0%, rgba(27,42,74,0.8) 42%, rgba(27,42,74,0.4) 68%, rgba(27,42,74,0.1) 100%)",
+              "linear-gradient(to right, rgba(27,42,74,0.95) 0%, rgba(27,42,74,0.88) 42%, rgba(27,42,74,0.6) 68%, rgba(27,42,74,0.35) 100%)",
           }}
         />
         <div className="relative z-10 flex items-center h-full min-h-[inherit]">
@@ -138,6 +140,7 @@ export default function HomePage() {
                     alt={svc.alt}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    style={{ objectPosition: svc.pos }}
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
                   <span className="absolute top-3 left-3 bg-white/90 text-[#1B2A4A] text-[11px] font-semibold px-2.5 py-1">

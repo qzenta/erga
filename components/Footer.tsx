@@ -5,7 +5,6 @@ const navLinks = [
   { href: "/electrical", label: "Electrical Services" },
   { href: "/", label: "Home" },
   { href: "/services", label: "Property Management" },
-  { href: "/listings", label: "Listings" },
   { href: "/about", label: "About Us" },
   { href: "/contact", label: "Contact" },
 ];
@@ -16,16 +15,13 @@ const serviceLinks = [
   { href: "/electrical#services", label: "Emergency Callouts" },
   { href: "/services#property-management", label: "Managing Agent" },
   { href: "/contact", label: "Get a Quote" },
-  { href: "/listings#register", label: "Apply as Tenant" },
 ];
 
 const resourceLinks = [
+  { href: "/electrical#callout-faq", label: "Electrical FAQ" },
   { href: "/resources", label: "Blog & Guides" },
-  { href: "/calculator", label: "Bond Calculator" },
   { href: "/tools", label: "Tools & Downloads" },
   { href: "/faqs", label: "FAQs" },
-  { href: "/downloads/tenant-checklist", label: "Tenant Checklist" },
-  { href: "/downloads/managing-agent-guide", label: "Owner Guide" },
 ];
 
 const legalLinks = [
