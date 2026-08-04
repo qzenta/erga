@@ -4,6 +4,8 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
+import MicrosoftClarity from "@/components/MicrosoftClarity";
 
 const dmSans = DM_Sans({
   variable: "--font-sans",
@@ -63,6 +65,8 @@ export default function RootLayout({
       className={`${dmSans.variable} ${cormorant.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-white text-navy">
+        <GoogleAnalytics />
+        <MicrosoftClarity />
         <Navbar />
         <main className="flex-1 flex flex-col">{children}</main>
         <Footer />
