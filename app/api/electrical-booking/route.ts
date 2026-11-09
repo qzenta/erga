@@ -48,6 +48,11 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Invalid request." }, { status: 400 });
   }
 
+  // Honeypot: real visitors never fill the hidden "website" field.
+  if (String(body.website ?? "").trim() !== "") {
+    return NextResponse.json({ ok: true });
+  }
+
   const name = String(body.name ?? "").trim();
   const phone = String(body.phone ?? "").trim();
   const email = String(body.email ?? "").trim();
@@ -56,11 +61,27 @@ export async function POST(req: NextRequest) {
   const preferredTime = String(body.preferred_time ?? "").trim();
   const consent = body.consent === true;
 
-  if (!name || !phone || !email || !address || !issue || !preferredTime) {
+  // Length caps — reject overlong input before forwarding to n8n
+  const caps: Record<string, { value: string; max: number }> = {
+    name: { value: name, max: 100 },
+    phone: { value: phone, max: 30 },
+    email: { value: email, max: 254 },
+    address: { value: address, max: 200 },
+    issue: { value: issue, max: 2000 },
+    preferred_time: { value: preferredTime, max: 40 },
+  };
+  for (const { value, max } of Object.values(caps)) {
+    if (value.length > max) {
+      return NextResponse.json({ error: "Please shorten your answer — one or more fields are too long." }, { status: 400 });
+    }
+  }
+
+  if (!name || !phone || !address || !issue || !preferredTime) {
     return NextResponse.json({ error: "Please fill in all required fields." }, { status: 400 });
   }
 
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+  // Email is optional; if present it must be valid
+  if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return NextResponse.json({ error: "Please enter a valid email address." }, { status: 400 });
   }
 

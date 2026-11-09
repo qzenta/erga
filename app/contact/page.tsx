@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
 import PageBanner from "@/components/PageBanner";
+import { whatsappLink } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: {
@@ -61,7 +62,7 @@ export default function ContactPage() {
                   WhatsApp
                 </h3>
                 <a
-                  href="https://wa.me/27000000000"
+                  href={whatsappLink()}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-5 py-2.5 text-sm tracking-widest uppercase text-white transition-colors rounded-sm"

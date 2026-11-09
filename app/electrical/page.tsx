@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { SITE, whatsappLink, telLink } from "@/lib/site";
 import ElectricalBookingForm from "@/components/ElectricalBookingForm";
 import TrustStrip from "@/components/TrustStrip";
+import Reveal from "@/components/ui/Reveal";
+import Button from "@/components/ui/Button";
 
 export const metadata: Metadata = {
   title: {
@@ -20,9 +23,9 @@ const howItWorks = [
 ];
 
 const recentWork = [
-  { src: "/images/electrical/electrician-seated.jpg", alt: "Erga electrician working on distribution board wiring" },
-  { src: "/images/electrical/panel-closeup.jpg", alt: "Completed distribution board wiring, close up" },
-  { src: "/images/electrical/ceiling-lighting.jpg", alt: "Ambient ceiling lighting installed by Erga Electrical Services" },
+  { src: "/images/electrical/electrician-seated.jpg", alt: "Erga electrician working on distribution board wiring", caption: "Distribution board wiring" },
+  { src: "/images/electrical/panel-closeup.jpg", alt: "Completed distribution board wiring, close up", caption: "Distribution board wiring, close up" },
+  { src: "/images/electrical/ceiling-lighting.jpg", alt: "Ambient ceiling lighting installed by Erga Electrical Services", caption: "Ceiling lighting installation" },
 ];
 
 const faqs = [
@@ -179,27 +182,89 @@ export default function ElectricalPage() {
         />
         <div className="relative z-10 mx-auto max-w-screen-xl w-full px-6 py-16">
           <div className="max-w-[620px]">
-            <p className="text-gold text-[11px] tracking-[0.2em] uppercase font-semibold mb-4">
+            <p className="text-gold-light text-[11px] tracking-[0.2em] uppercase font-semibold mb-4">
               Erga Electrical Services
             </p>
-            <h1 className="text-white font-bold leading-tight mb-4" style={{ fontSize: "clamp(28px, 3.6vw, 48px)" }}>
+            <h1
+              className="font-display font-display-600 text-white leading-tight mb-4"
+              style={{ fontSize: "clamp(34px, 5vw, 60px)", lineHeight: 1.1 }}
+            >
               Meet Amos C. — Alberton&apos;s Trusted Electrician
             </h1>
-            <p className="text-white/70 mb-8 leading-relaxed" style={{ fontSize: "clamp(14px, 1.4vw, 17px)" }}>
+            <p className="text-white/70 mb-8 leading-relaxed max-w-[62ch]" style={{ fontSize: "clamp(15px, 1.4vw, 17px)" }}>
               Licensed inspection, transparent quoting, no surprises. Amos has served Alberton for over a decade — book him online in minutes.
             </p>
-            <Link
-              href="#booking"
-              className="inline-block px-8 py-3.5 bg-gold text-white text-[13px] font-semibold tracking-wide hover:bg-gold-light transition-colors"
-            >
-              Book a Callout
-            </Link>
+            <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+              <Button href="#booking" variant="primary">
+                Book a Callout
+              </Button>
+              <Button href={telLink} variant="outline-light" ariaLabel={`Call ${SITE.phoneDisplay}`}>
+                Call {SITE.phoneDisplay}
+              </Button>
+              <a
+                href={whatsappLink()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="min-h-[44px] inline-flex items-center text-white/85 underline underline-offset-4 text-[14px] font-semibold px-2 hover:text-white transition-colors"
+              >
+                WhatsApp us
+              </a>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Trust strip */}
       <TrustStrip />
+
+      {/* Services catalog */}
+      <section id="services" className="bg-[#F8F8F6] py-16 border-b border-[#E5E7EB]">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="mb-10 text-center">
+            <p className="text-gold text-[11px] tracking-[0.2em] uppercase font-semibold mb-2">What we do</p>
+            <h2 className="text-navy text-[28px] md:text-[34px] font-bold">Electrical Services</h2>
+            <p className="text-navy/55 text-[14px] mt-3 max-w-xl mx-auto">
+              Quote-based pricing tailored to your job — more services will be added over time.
+            </p>
+          </div>
+
+          <div className="grid gap-5 sm:grid-cols-2 md:grid-cols-3">
+            {catalog.map((item) => (
+              <div
+                key={item.title}
+                className="group bg-white border border-line hover:border-gold hover:shadow-md transition-all duration-200 p-6 flex flex-col items-start"
+              >
+                <div className="w-11 h-11 rounded-full bg-cream border border-gold/25 flex items-center justify-center text-gold mb-4">
+                  <ServiceIcon name={item.icon} />
+                </div>
+                <h3 className="text-navy text-[16px] font-bold mb-2 leading-snug">{item.title}</h3>
+                <p className="text-navy/60 text-[13.5px] leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <p className="mt-10 text-center text-navy/55 text-[14px]">
+            Don&apos;t see your job listed?{" "}
+            <Link href="#booking" className="text-gold underline underline-offset-4 hover:text-navy transition-colors">
+              Describe it in a booking
+            </Link>{" "}
+            — if it&apos;s electrical, we&apos;ll quote it.
+          </p>
+        </div>
+      </section>
+
+      {/* Booking form — directly after the catalog */}
+      <section id="booking" className="bg-[#F8F8F6] py-16">
+        <div className="mx-auto max-w-2xl px-6">
+          <div className="text-center mb-10">
+            <p className="text-gold text-[11px] tracking-[0.2em] uppercase font-semibold mb-2">Book online</p>
+            <h2 className="text-navy text-[28px] font-bold">Request a Callout</h2>
+          </div>
+          <div className="bg-white border border-[#E5E7EB] p-8">
+            <ElectricalBookingForm />
+          </div>
+        </div>
+      </section>
 
       {/* How It Works */}
       <section className="bg-white border-b border-[#E5E7EB] py-16">
@@ -222,42 +287,6 @@ export default function ElectricalPage() {
         </div>
       </section>
 
-      {/* Services catalog */}
-      <section id="services" className="bg-[#F8F8F6] py-16 border-b border-[#E5E7EB]">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="mb-10 text-center">
-            <p className="text-gold text-[11px] tracking-[0.2em] uppercase font-semibold mb-2">What we do</p>
-            <h2 className="text-navy text-[28px] md:text-[34px] font-bold">Electrical Services</h2>
-            <p className="text-navy/55 text-[14px] mt-3 max-w-xl mx-auto">
-              Quote-based pricing tailored to your job — more services will be added over time.
-            </p>
-          </div>
-
-          <div className="grid gap-5 sm:grid-cols-2 md:grid-cols-3">
-            {catalog.map((item) => (
-              <div
-                key={item.title}
-                className="group bg-white border border-[#E5E7EB] hover:border-[#9A7B2F] hover:shadow-md transition-all duration-200 p-6 flex flex-col items-start"
-              >
-                <div className="w-11 h-11 rounded-full bg-[#F8F8F6] border border-[#9A7B2F]/25 flex items-center justify-center text-gold mb-4">
-                  <ServiceIcon name={item.icon} />
-                </div>
-                <h3 className="text-navy text-[16px] font-bold mb-2 leading-snug">{item.title}</h3>
-                <p className="text-navy/60 text-[13.5px] leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-
-          <p className="mt-10 text-center text-navy/55 text-[14px]">
-            Don&apos;t see your job listed?{" "}
-            <Link href="#booking" className="text-gold underline underline-offset-4 hover:text-navy transition-colors">
-              Describe it in a booking
-            </Link>{" "}
-            — if it&apos;s electrical, we&apos;ll quote it.
-          </p>
-        </div>
-      </section>
-
       {/* Recent Work */}
       <section className="bg-white py-16 border-b border-[#E5E7EB]">
         <div className="mx-auto max-w-6xl px-6">
@@ -266,16 +295,22 @@ export default function ElectricalPage() {
             <h2 className="text-navy text-[28px] md:text-[34px] font-bold">Recent Work</h2>
           </div>
           <div className="grid gap-5 sm:grid-cols-3">
-            {recentWork.map((photo) => (
-              <div key={photo.src} className="relative overflow-hidden" style={{ height: 260 }}>
-                <Image
-                  src={photo.src}
-                  alt={photo.alt}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 640px) 100vw, 33vw"
-                />
-              </div>
+            {recentWork.map((photo, i) => (
+              <Reveal key={photo.src} delay={Math.min(i, 3) * 80}>
+                <figure>
+                  <div className="relative overflow-hidden" style={{ height: 260 }}>
+                    <Image
+                      src={photo.src}
+                      alt={photo.alt}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 100vw, 33vw"
+                    />
+                  </div>
+                  {/* Captions derived only from the existing alt text */}
+                  <figcaption className="mt-2 text-[13px] text-navy/60">{photo.caption}</figcaption>
+                </figure>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -300,15 +335,31 @@ export default function ElectricalPage() {
         </div>
       </section>
 
-      {/* Booking Form */}
-      <section id="booking" className="bg-[#F8F8F6] py-16">
-        <div className="mx-auto max-w-2xl px-6">
-          <div className="text-center mb-10">
-            <p className="text-gold text-[11px] tracking-[0.2em] uppercase font-semibold mb-2">Book online</p>
-            <h2 className="text-navy text-[28px] font-bold">Request a Callout</h2>
-          </div>
-          <div className="bg-white border border-[#E5E7EB] p-8">
-            <ElectricalBookingForm />
+      {/* Final CTA */}
+      <section className="bg-navy py-16 md:py-24">
+        <div className="mx-auto max-w-2xl px-6 text-center">
+          <p className="text-gold-light text-[11px] tracking-[0.2em] uppercase font-semibold mb-4">Ready to book?</p>
+          <h2 className="font-display text-white text-[clamp(26px,3.4vw,40px)] mb-5 leading-tight">
+            Get a licensed electrician out today
+          </h2>
+          <p className="text-white/65 text-[15px] mb-8 leading-relaxed max-w-[62ch] mx-auto">
+            Transparent quoting, no surprises. Book online and we&apos;ll be in touch to confirm a time.
+          </p>
+          <div className="flex flex-col sm:flex-row sm:items-center justify-center gap-3">
+            <Button href="#booking" variant="primary">
+              Book a Callout
+            </Button>
+            <Button href={telLink} variant="outline-light" ariaLabel={`Call ${SITE.phoneDisplay}`}>
+              Call {SITE.phoneDisplay}
+            </Button>
+            <a
+              href={whatsappLink()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="min-h-[44px] inline-flex items-center text-gold-light underline underline-offset-4 text-[14px] font-semibold px-2 hover:text-white transition-colors"
+            >
+              WhatsApp us
+            </a>
           </div>
         </div>
       </section>

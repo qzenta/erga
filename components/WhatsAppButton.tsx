@@ -1,15 +1,19 @@
+import { whatsappLink } from "@/lib/site";
+
+/* Floating WhatsApp button — desktop only (the mobile action bar covers small screens).
+   The label pill shows on hover and keyboard focus. */
 export default function WhatsAppButton() {
   return (
-    <div className="group fixed bottom-6 right-6 z-50">
-      <span className="absolute bottom-16 right-0 bg-navy text-white text-xs px-3 py-1.5 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-lg">
+    <div className="group fixed bottom-6 right-6 z-50 hidden md:flex">
+      <span className="absolute bottom-16 right-0 bg-navy text-white text-xs px-3 py-1.5 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity pointer-events-none shadow-lg">
         Chat with us on WhatsApp
       </span>
       <a
-        href="https://wa.me/27000000000"
+        href={whatsappLink()}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat with us on WhatsApp"
-        className="flex items-center justify-center w-14 h-14 rounded-full shadow-lg hover:shadow-xl transition-shadow"
+        className="flex items-center justify-center min-h-[44px] min-w-[44px] w-14 h-14 rounded-full shadow-lg hover:shadow-xl transition-shadow"
         style={{ background: "#25D366" }}
       >
         <svg

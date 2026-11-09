@@ -62,7 +62,7 @@ const forms = [
   {
     label: "WhatsApp Us Directly",
     desc: "Prefer a quick message? Chat with the Erga team on WhatsApp — we usually respond within the hour.",
-    href: "https://wa.me/27000000000",
+    href: "https://wa.me/27650775630",
     cta: "Open WhatsApp",
     external: true,
   },
@@ -310,7 +310,7 @@ export default function ToolsPage() {
           </div>
 
           <p className="text-xs text-[#1B2A4A]/40 mt-10 text-center">
-            Rental ranges and yield estimates are based on current market data and Erga's portfolio experience. For a formal rental valuation, <Link href="/contact" className="underline hover:text-[#9A7B2F]">contact us</Link>.
+            Rental ranges and yield estimates are based on current market data and Erga&apos;s portfolio experience. For a formal rental valuation, <Link href="/contact" className="underline hover:text-[#9A7B2F]">contact us</Link>.
           </p>
         </div>
       </section>
