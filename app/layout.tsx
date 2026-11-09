@@ -4,18 +4,20 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import MobileActionBar from "@/components/MobileActionBar";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import MicrosoftClarity from "@/components/MicrosoftClarity";
+import { SITE } from "@/lib/site";
 
 const dmSans = DM_Sans({
-  variable: "--font-sans",
+  variable: "--font-dm-sans",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
 
 const cormorant = Cormorant_Garamond({
-  variable: "--font-serif",
+  variable: "--font-cormorant",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600"],
   style: ["normal", "italic"],
@@ -25,17 +27,20 @@ const cormorant = Cormorant_Garamond({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.erga.co.za"),
   title: {
-    default: "Erga Properties | Excellence in Property Management",
-    template: "%s | Erga Properties",
+    default: "Electrician Alberton | Erga Electrical Services",
+    template: "%s | Erga",
   },
   description:
-    "Erga Properties is a Johannesburg-based property company offering direct portfolio management and professional managing agent services across Gauteng.",
+    "Erga Electrical Services — Alberton's trusted electrician. Licensed inspection, transparent quoting, no surprises. Book online in minutes. Serving Alberton for over a decade.",
   keywords: [
-    "Erga Properties",
-    "property management Johannesburg",
+    "electrician Alberton",
+    "certificate of compliance Gauteng",
+    "DB board upgrade",
+    "emergency electrician Alberton",
+    "Erga Electrical Services",
+    "electrical services Gauteng",
+    "property management Alberton",
     "managing agent Gauteng",
-    "residential property Kempton Park",
-    "Alberton property management",
   ],
   icons: {
     icon: [
@@ -46,14 +51,36 @@ export const metadata: Metadata = {
     apple: "/erga_favicon.png",
   },
   openGraph: {
-    title: "Erga Properties | Excellence in Property Management",
+    title: "Electrician Alberton | Erga Electrical Services",
     description:
-      "Professional property management and managing agent services across Gauteng.",
+      "Erga Electrical Services — Alberton's trusted electrician. Licensed inspection, transparent quoting, no surprises. Book online in minutes.",
     url: "https://www.erga.co.za",
-    siteName: "Erga Properties",
+    siteName: "Erga Electrical Services",
     locale: "en_ZA",
     type: "website",
+    images: [{ url: "/images/electrical/electrician-ladder.jpg" }],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Electrician Alberton | Erga Electrical Services",
+    description:
+      "Erga Electrical Services — Alberton's trusted electrician. Licensed inspection, transparent quoting, no surprises.",
+  },
+};
+
+/* Inline script (before hydration): marks the document as JS-enabled so the
+   .reveal pre-reveal hiding in globals.css only applies when it can resolve. */
+const jsFlagScript = 'document.documentElement.classList.add("js")';
+
+/* Local-business structured data — only facts already on the site. */
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Electrician",
+  name: SITE.name,
+  url: "https://www.erga.co.za",
+  telephone: SITE.phoneTel,
+  email: SITE.email,
+  areaServed: "Alberton, Gauteng",
 };
 
 export default function RootLayout({
@@ -62,15 +89,24 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${dmSans.variable} ${cormorant.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-white text-navy">
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: jsFlagScript }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
+      <body className="min-h-full flex flex-col bg-white text-navy pb-[calc(56px+env(safe-area-inset-bottom))] md:pb-0">
         <GoogleAnalytics />
         <MicrosoftClarity />
         <Navbar />
         <main className="flex-1 flex flex-col">{children}</main>
         <Footer />
         <WhatsAppButton />
+        <MobileActionBar />
       </body>
     </html>
   );

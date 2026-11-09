@@ -184,7 +184,7 @@ export default function RentalYieldCalculator() {
         )}
 
         <p className="text-xs text-navy/50 leading-relaxed border-l-2 border-gold/40 pl-4 italic mt-8">
-          Net yield excludes bond repayments, maintenance reserves, and insurance. Erga's 10% management fee is pre-filled as a guide. Results are indicative only.
+          Net yield excludes bond repayments, maintenance reserves, and insurance. Erga&apos;s 10% management fee is pre-filled as a guide. Results are indicative only.
         </p>
       </div>
     </section>

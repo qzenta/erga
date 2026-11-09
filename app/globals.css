@@ -4,13 +4,15 @@
   --color-navy: #1B2A4A;
   --color-gold: #9A7B2F;
   --color-gold-light: #c2a14d;
+  --color-gold-deep: #7A5E1A;
   --color-cream: #F9F7F3;
   --color-charcoal: #2D3748;
+  --color-line: #E5E7EB;
   --color-background: #FFFFFF;
   --color-foreground: #1B2A4A;
 
-  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-serif), ui-serif, Georgia, serif;
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-cormorant), ui-serif, Georgia, serif;
 }
 
 html,
@@ -24,17 +26,39 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 15px;
-  line-height: 1.6;
+  line-height: 1.65;
   font-weight: 400;
   letter-spacing: -0.01em;
 }
 
-/* Bold DM Sans for all headings — Zillow-style clarity */
-h1, h2, h3, h4, h5 {
+/* 16px body text — applied only inside the new ui primitives and on the
+   redesigned home and /electrical pages, via the .text-16 utility. */
+.text-16 {
+  font-size: 16px;
+}
+
+/* Bold DM Sans for all headings — Zillow-style clarity.
+   Display headings opt into the serif via .font-display. */
+h1,
+h2,
+h3,
+h4,
+h5 {
   font-family: var(--font-sans);
   font-weight: 700;
   letter-spacing: -0.025em;
   line-height: 1.2;
+}
+
+/* Serif display headings (home hero H1, section H2s) — Cormorant 500/600 */
+.font-display {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.font-display-600 {
+  font-weight: 600;
 }
 
 /* Keep serif class available for intentional brand moments (logo, quotes, prices) */
@@ -44,7 +68,11 @@ h1, h2, h3, h4, h5 {
 }
 
 /* Zillow-inspired: tighter, cleaner sans for UI text */
-button, input, select, textarea, label {
+button,
+input,
+select,
+textarea,
+label {
   font-family: var(--font-sans);
   font-size: 14px;
 }
@@ -53,29 +81,121 @@ p {
   line-height: 1.65;
 }
 
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+/* Accessible focus ring everywhere */
+:focus-visible {
+  outline: 2px solid var(--color-gold-light);
+  outline-offset: 2px;
 }
 
-.marquee-track {
-  animation: marquee 60s linear infinite;
-  will-change: transform;
+/* ─── Motion ───────────────────────────────────────────────────────────── */
+/* All transforms/animation below are opt-out under prefers-reduced-motion. */
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .marquee-track {
+    animation: marquee 60s linear infinite;
+    will-change: transform;
+  }
+
+  .marquee-wrapper:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.7s ease both;
+  }
+
+  .animate-delay-100 {
+    animation-delay: 0.1s;
+  }
+  .animate-delay-200 {
+    animation-delay: 0.2s;
+  }
+  .animate-delay-300 {
+    animation-delay: 0.3s;
+  }
+
+  /* Reveal on scroll — opacity 0→1, translateY 16px→0, 500ms ease-out.
+     Hiding is scoped under .js (set by a tiny inline script in layout.tsx)
+     so content is never invisible when JavaScript doesn't run. */
+  .js .reveal:not(.reveal-visible) {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  .js .reveal {
+    transition: opacity 500ms ease-out, transform 500ms ease-out;
+  }
+
+  .reveal.reveal-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Hero background — slow ken-burns zoom */
+  @keyframes heroZoom {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.04);
+    }
+  }
+
+  .hero-zoom {
+    animation: heroZoom 14s ease-out both;
+  }
+
+  /* Circuit-trace connector — drawn once with stroke-dasharray when the
+     wrapping Reveal becomes visible. Paths carry pathLength=240. */
+  @keyframes circuitDraw {
+    from {
+      stroke-dashoffset: 240;
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  .reveal-visible .circuit-trace path:not(.trace-static) {
+    stroke-dasharray: 240;
+    stroke-dashoffset: 240;
+    animation: circuitDraw 2s ease-out forwards;
+    animation-delay: 400ms;
+  }
+
+  .circuit-trace {
+    opacity: 0.9;
+  }
 }
 
-.marquee-wrapper:hover .marquee-track {
-  animation-play-state: paused;
+/* Hero sizing — top padding matches the fixed 60px nav */
+.hero {
+  min-height: clamp(520px, 70vh, 720px);
+  padding-top: 60px;
 }
 
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
+@media (max-width: 639.98px) {
+  .hero {
+    min-height: min(560px, 100svh);
+  }
 }
-
-.animate-fade-in-up {
-  animation: fadeInUp 0.7s ease both;
-}
-
-.animate-delay-100 { animation-delay: 0.1s; }
-.animate-delay-200 { animation-delay: 0.2s; }
-.animate-delay-300 { animation-delay: 0.3s; }
