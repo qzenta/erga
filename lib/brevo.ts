@@ -5,7 +5,7 @@ const DEFAULT_SENDER = {
   email: "info@erga.co.za",
 };
 
-const ERGA_EMAIL = "info@erga.co.za";
+const ERGA_EMAIL = process.env.NOTIFY_EMAIL_TO || "info@erga.co.za";
 
 interface SendEmailParams {
   to: { email: string; name?: string };
