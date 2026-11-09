@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageBanner from "@/components/PageBanner";
-import PartnersSection from "@/components/PartnersSection";
 
 export const metadata: Metadata = {
   title: { absolute: "Our Services | Erga Properties Johannesburg" },
@@ -183,8 +182,6 @@ export default function ServicesPage() {
           </Link>
         </div>
       </section>
-
-      <PartnersSection />
     </>
   );
 }
