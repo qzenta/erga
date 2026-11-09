@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { SITE, whatsappLink, telLink } from "@/lib/site";
 import TrustStrip from "@/components/TrustStrip";
 import CircuitTrace from "@/components/CircuitTrace";
+import TrackedLink from "@/components/TrackedLink";
 import Container from "@/components/ui/Container";
 import Section from "@/components/ui/Section";
 import Eyebrow from "@/components/ui/Eyebrow";
@@ -23,26 +25,18 @@ export const metadata: Metadata = {
 /* Short titles from the /electrical catalog — copy is derived from the
    existing service descriptions, nothing new is claimed. */
 const services = [
-  { title: "Fault Finding", desc: "Tripping breakers, dead sockets, flickering lights — traced and fixed properly." },
+  { title: "Fault Finding", desc: "Tripping breakers, dead sockets, flickering lights — traced and fixed properly, first time. Urgent electrical faults get priority." },
   { title: "DB Boards", desc: "New distribution boards and upgrades of overloaded boards to current standards." },
   { title: "CoC", desc: "Certificates of Compliance for property sales, transfers, and insurance." },
   { title: "Rewiring", desc: "Full or partial rewiring of older homes and commercial premises." },
   { title: "Plugs & Lights", desc: "Plug points, light fittings, dimmers, and switches — installed and tested." },
   { title: "Geyser & Stove", desc: "Safe, compliant electrical connections for geysers, stoves, and hobs." },
-  { title: "Emergency", desc: "Urgent electrical faults get priority — tell us it's an emergency when you book." },
 ];
 
 const howItWorks = [
   { n: "1", title: "Book", body: "Tell us what's wrong and when suits you." },
   { n: "2", title: "Inspect and quote", body: "Your electrician assesses the job on-site and quotes before any work starts." },
   { n: "3", title: "Approve", body: "Approve the itemised quote — only then does the work begin." },
-];
-
-const trustChips = [
-  "Licensed inspection",
-  "Itemised quotes",
-  "R450 callout waived when you accept",
-  "Gauteng-wide",
 ];
 
 const realWork = [
@@ -69,7 +63,7 @@ export default function HomePage() {
   return (
     <>
       {/* 1 — Hero: electrical-first */}
-      <section className="hero relative overflow-hidden flex items-center">
+      <section className="hero relative overflow-hidden flex items-center text-16">
         <div className="absolute inset-0 overflow-hidden">
           <Image
             src="/images/electrical/panel-closeup.jpg"
@@ -88,8 +82,10 @@ export default function HomePage() {
               "linear-gradient(to right, rgba(27,42,74,0.95) 0%, rgba(27,42,74,0.88) 42%, rgba(27,42,74,0.6) 68%, rgba(27,42,74,0.35) 100%)",
           }}
         />
-        {/* Faint circuit-trace accent */}
-        <CircuitTrace className="hidden md:block absolute right-10 top-1/4 w-64 text-gold/40 z-[5]" />
+        {/* Faint circuit-trace accent — draws on reveal */}
+        <Reveal className="hidden md:block absolute right-10 top-1/4 w-64 z-[5] text-gold/40">
+          <CircuitTrace className="w-64" />
+        </Reveal>
 
         <div className="relative z-10 flex items-center h-full min-h-[inherit] w-full">
           <Container className="w-full">
@@ -109,33 +105,32 @@ export default function HomePage() {
               </p>
 
               <div className="flex flex-col sm:flex-row sm:items-center gap-3">
-                <Button href="/electrical#booking" variant="primary">
+                <TrackedLink
+                  href="/electrical#booking"
+                  event="click_book"
+                  location="home_hero"
+                  className="inline-flex items-center justify-center gap-2 px-7 py-3 min-h-[44px] text-[14px] font-semibold tracking-wide transition-colors bg-gold-deep text-white hover:bg-navy"
+                >
                   Book a Callout
-                </Button>
-                <Button href={telLink} variant="outline-light" ariaLabel={`Call ${SITE.phoneDisplay}`}>
+                </TrackedLink>
+                <TrackedLink
+                  href={telLink}
+                  event="click_call"
+                  location="home_hero"
+                  className="inline-flex items-center justify-center gap-2 px-7 py-3 min-h-[44px] text-[14px] font-semibold tracking-wide transition-colors border border-white/40 text-white hover:bg-white hover:text-navy"
+                  ariaLabel={`Call ${SITE.phoneDisplay}`}
+                >
                   Call {SITE.phoneDisplay}
-                </Button>
-                <a
+                </TrackedLink>
+                <TrackedLink
                   href={whatsappLink()}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  event="click_whatsapp"
+                  location="home_hero"
                   className="text-white/85 underline underline-offset-4 text-[14px] font-semibold tracking-wide px-2 py-2 hover:text-white transition-colors"
                 >
                   WhatsApp us
-                </a>
+                </TrackedLink>
               </div>
-
-              {/* Trust chips — all existing claims */}
-              <ul className="flex flex-wrap gap-2 mt-8">
-                {trustChips.map((chip) => (
-                  <li
-                    key={chip}
-                    className="border border-white/25 bg-white/5 text-white/85 text-[12px] font-medium px-3 py-1.5 rounded-full"
-                  >
-                    {chip}
-                  </li>
-                ))}
-              </ul>
             </div>
           </Container>
         </div>
@@ -164,9 +159,9 @@ export default function HomePage() {
           <Reveal>
             <p className="mt-10 text-navy/60 text-[14px] max-w-[62ch]">
               Don&apos;t see your job listed? View the{" "}
-              <a href="/electrical#services" className="text-gold-deep underline underline-offset-4 hover:text-navy transition-colors">
+              <Link href="/electrical#services" className="text-gold-deep underline underline-offset-4 hover:text-navy transition-colors">
                 full electrical services catalog
-              </a>
+              </Link>
               .
             </p>
           </Reveal>
@@ -274,20 +269,31 @@ export default function HomePage() {
                 Transparent quoting, no surprises. Book online and we&apos;ll be in touch to confirm a time.
               </p>
               <div className="flex flex-col sm:flex-row sm:items-center justify-center gap-3">
-                <Button href="/electrical#booking" variant="primary">
+                <TrackedLink
+                  href="/electrical#booking"
+                  event="click_book"
+                  location="home_final_cta"
+                  className="inline-flex items-center justify-center gap-2 px-7 py-3 min-h-[44px] text-[14px] font-semibold tracking-wide transition-colors bg-gold-deep text-white hover:bg-navy"
+                >
                   Book a Callout
-                </Button>
-                <Button href={telLink} variant="ghost" ariaLabel={`Call ${SITE.phoneDisplay}`}>
+                </TrackedLink>
+                <TrackedLink
+                  href={telLink}
+                  event="click_call"
+                  location="home_final_cta"
+                  className="text-gold-deep underline underline-offset-4 text-[14px] font-semibold px-2 py-2 hover:text-navy transition-colors"
+                  ariaLabel={`Call ${SITE.phoneDisplay}`}
+                >
                   Call {SITE.phoneDisplay}
-                </Button>
-                <a
+                </TrackedLink>
+                <TrackedLink
                   href={whatsappLink()}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  event="click_whatsapp"
+                  location="home_final_cta"
                   className="min-h-[44px] inline-flex items-center text-gold-deep underline underline-offset-4 text-[14px] font-semibold px-2 hover:text-navy transition-colors"
                 >
                   WhatsApp us
-                </a>
+                </TrackedLink>
               </div>
             </Reveal>
           </div>

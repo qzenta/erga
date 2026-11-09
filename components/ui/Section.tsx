@@ -24,7 +24,7 @@ export default function Section({
   children: ReactNode;
 }) {
   return (
-    <section id={id} style={style} className={`${tones[tone]} py-16 md:py-24 ${className}`.trim()}>
+    <section id={id} style={style} className={`${tones[tone]} text-16 py-16 md:py-24 ${className}`.trim()}>
       {children}
     </section>
   );

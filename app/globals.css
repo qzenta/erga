@@ -25,10 +25,16 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.65;
   font-weight: 400;
   letter-spacing: -0.01em;
+}
+
+/* 16px body text — applied only inside the new ui primitives and on the
+   redesigned home and /electrical pages, via the .text-16 utility. */
+.text-16 {
+  font-size: 16px;
 }
 
 /* Bold DM Sans for all headings — Zillow-style clarity.
@@ -128,10 +134,15 @@ p {
     animation-delay: 0.3s;
   }
 
-  /* Reveal on scroll — opacity 0→1, translateY 16px→0, 500ms ease-out */
-  .reveal {
+  /* Reveal on scroll — opacity 0→1, translateY 16px→0, 500ms ease-out.
+     Hiding is scoped under .js (set by a tiny inline script in layout.tsx)
+     so content is never invisible when JavaScript doesn't run. */
+  .js .reveal:not(.reveal-visible) {
     opacity: 0;
     transform: translateY(16px);
+  }
+
+  .js .reveal {
     transition: opacity 500ms ease-out, transform 500ms ease-out;
   }
 
@@ -154,8 +165,8 @@ p {
     animation: heroZoom 14s ease-out both;
   }
 
-  /* Circuit-trace connector — drawn once with stroke-dasharray.
-     Paths carry pathLength=240 so dasharray math is uniform. */
+  /* Circuit-trace connector — drawn once with stroke-dasharray when the
+     wrapping Reveal becomes visible. Paths carry pathLength=240. */
   @keyframes circuitDraw {
     from {
       stroke-dashoffset: 240;
@@ -165,11 +176,15 @@ p {
     }
   }
 
-  .circuit-trace path:not(.trace-static) {
+  .reveal-visible .circuit-trace path:not(.trace-static) {
     stroke-dasharray: 240;
     stroke-dashoffset: 240;
     animation: circuitDraw 2s ease-out forwards;
     animation-delay: 400ms;
+  }
+
+  .circuit-trace {
+    opacity: 0.9;
   }
 }
 

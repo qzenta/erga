@@ -48,6 +48,14 @@ export default function ElectricalBookingForm() {
     if (Object.keys(fieldErrors).length > 0) {
       setErrors(fieldErrors);
       setStatus("error");
+
+      // Move focus to the first invalid field so keyboard and screen-reader
+      // users land on what to fix.
+      const order = ["name", "phone", "address", "issue", "email", "consent"];
+      const firstError = order.find((key) => fieldErrors[key as keyof FieldErrors]);
+      if (firstError) {
+        form.querySelector<HTMLElement>(`#${firstError}`)?.focus();
+      }
       return;
     }
     setErrors({});
@@ -94,6 +102,7 @@ export default function ElectricalBookingForm() {
 
   const inputClass =
     "w-full border border-navy/20 px-4 py-3 bg-white text-navy focus:border-gold-deep";
+  const errorInputClass = "border-red-700";
   const labelClass = "block text-sm tracking-widest uppercase text-navy mb-2";
 
   if (status === "success") {
@@ -191,7 +200,8 @@ export default function ElectricalBookingForm() {
           rows={4}
           required
           aria-describedby={errors.issue ? "issue-error" : undefined}
-          className={inputClass}
+          aria-invalid={Boolean(errors.issue) || undefined}
+          className={`${inputClass} ${errors.issue ? errorInputClass : ""}`.trim()}
         />
         <FieldError id="issue-error" message={errors.issue} />
       </div>
@@ -227,7 +237,8 @@ export default function ElectricalBookingForm() {
             type="checkbox"
             required
             aria-describedby={errors.consent ? "consent-error" : undefined}
-            className="mt-1 h-4 w-4 border-navy/30 accent-gold-deep shrink-0"
+            aria-invalid={Boolean(errors.consent) || undefined}
+            className={`${errors.consent ? "outline-2 outline-red-700" : ""} mt-1 h-4 w-4 border-navy/30 accent-gold-deep shrink-0`}
           />
           <label htmlFor="consent" className="text-sm text-navy/80 leading-relaxed">
             I understand a R450 callout fee applies if I decline the quote after
@@ -296,7 +307,8 @@ function Field({
         autoComplete={autoComplete}
         inputMode={inputMode}
         aria-describedby={error ? `${id}-error` : undefined}
-        className={inputClass}
+        aria-invalid={Boolean(error) || undefined}
+        className={`${inputClass} ${error ? "border-red-700" : ""}`.trim()}
       />
       <FieldError id={`${id}-error`} message={error} />
     </div>

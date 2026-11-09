@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import ErgoLogo from "@/components/ui/ErgoLogo";
+import TrackedLink from "@/components/TrackedLink";
 import { SITE, whatsappLink, telLink } from "@/lib/site";
 
 /* ─── Confirmed partners — prominent placement, they're special ──────────
@@ -175,20 +176,22 @@ export default function Footer() {
           >
             {SITE.email}
           </a>
-          <a
+          <TrackedLink
             href={telLink}
+            event="click_call"
+            location="footer"
             className="text-white/80 hover:text-[#9A7B2F] text-[13px] font-semibold transition-colors"
           >
             {SITE.phoneDisplay}
-          </a>
-          <a
+          </TrackedLink>
+          <TrackedLink
             href={whatsappLink()}
-            target="_blank"
-            rel="noopener noreferrer"
+            event="click_whatsapp"
+            location="footer"
             className="text-white/80 hover:text-[#9A7B2F] text-[13px] transition-colors self-start"
           >
             Chat on WhatsApp
-          </a>
+          </TrackedLink>
           <address className="not-italic text-white/55 text-[12px] leading-relaxed">
             37 Kamferbos Street<br />
             Brackendowns, Alberton<br />

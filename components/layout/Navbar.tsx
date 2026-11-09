@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import ErgoLogo from "@/components/ui/ErgoLogo";
+import TrackedLink from "@/components/TrackedLink";
 import { SITE, telLink } from "@/lib/site";
 
 /* ─── Nav data — trades-first ordering per CC brief ──────────────────────
@@ -55,7 +56,7 @@ export default function Navbar() {
                   href={item.href}
                   className={[
                     "block px-3 py-1 text-[14px] font-medium tracking-[-0.01em] transition-colors",
-                    active ? "text-gold" : "text-navy hover:text-gold",
+                    active ? "text-gold-deep" : "text-navy hover:text-gold-deep",
                   ].join(" ")}
                 >
                   {item.label}
@@ -74,15 +75,17 @@ export default function Navbar() {
 
         {/* Right group — phone + CTA */}
         <div className="hidden md:flex items-center gap-4 shrink-0">
-          <a
+          <TrackedLink
             href={telLink}
-            className="flex items-center gap-1.5 text-[13px] font-semibold text-navy hover:text-gold transition-colors"
+            event="click_call"
+            location="navbar"
+            className="flex items-center gap-1.5 text-[13px] font-semibold text-navy hover:text-gold-deep transition-colors"
           >
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8.1 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.6 2z" />
             </svg>
             {SITE.phoneDisplay}
-          </a>
+          </TrackedLink>
           <Link
             href="/electrical#booking"
             className="px-5 py-2 bg-gold-deep text-white text-[11px] font-medium uppercase tracking-[0.1em] hover:bg-navy transition-colors"
@@ -96,7 +99,7 @@ export default function Navbar() {
           type="button"
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileOpen}
-          className="md:hidden p-2 text-navy"
+          className="md:hidden flex items-center justify-center min-h-[44px] min-w-[44px] p-2 text-navy"
           onClick={() => setOpenAt(mobileOpen ? null : pathname)}
         >
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

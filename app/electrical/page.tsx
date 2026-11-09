@@ -6,6 +6,11 @@ import ElectricalBookingForm from "@/components/ElectricalBookingForm";
 import TrustStrip from "@/components/TrustStrip";
 import Reveal from "@/components/ui/Reveal";
 import Button from "@/components/ui/Button";
+import TrackedLink from "@/components/TrackedLink";
+import Container from "@/components/ui/Container";
+import Section from "@/components/ui/Section";
+import Eyebrow from "@/components/ui/Eyebrow";
+import Card from "@/components/ui/Card";
 
 export const metadata: Metadata = {
   title: {
@@ -160,7 +165,7 @@ export default function ElectricalPage() {
     <>
       {/* Hero */}
       <section
-        className="relative overflow-hidden flex items-center"
+        className="relative overflow-hidden flex items-center text-16"
         style={{ minHeight: "clamp(320px, 38vw, 420px)", paddingTop: 60 }}
       >
         <Image
@@ -180,11 +185,9 @@ export default function ElectricalPage() {
               "linear-gradient(to right, rgba(13,24,41,0.94) 0%, rgba(27,42,74,0.88) 45%, rgba(27,42,74,0.45) 75%, rgba(27,42,74,0.2) 100%)",
           }}
         />
-        <div className="relative z-10 mx-auto max-w-screen-xl w-full px-6 py-16">
-          <div className="max-w-[620px]">
-            <p className="text-gold-light text-[11px] tracking-[0.2em] uppercase font-semibold mb-4">
-              Erga Electrical Services
-            </p>
+        <Container className="relative z-10 w-full">
+          <div className="max-w-[620px] py-16">
+            <Eyebrow>Erga Electrical Services</Eyebrow>
             <h1
               className="font-display font-display-600 text-white leading-tight mb-4"
               style={{ fontSize: "clamp(34px, 5vw, 60px)", lineHeight: 1.1 }}
@@ -198,102 +201,123 @@ export default function ElectricalPage() {
               <Button href="#booking" variant="primary">
                 Book a Callout
               </Button>
-              <Button href={telLink} variant="outline-light" ariaLabel={`Call ${SITE.phoneDisplay}`}>
+              <TrackedLink
+                href={telLink}
+                event="click_call"
+                location="electrical_hero"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3 min-h-[44px] text-[14px] font-semibold tracking-wide transition-colors border border-white/40 text-white hover:bg-white hover:text-navy"
+                ariaLabel={`Call ${SITE.phoneDisplay}`}
+              >
                 Call {SITE.phoneDisplay}
-              </Button>
-              <a
+              </TrackedLink>
+              <TrackedLink
                 href={whatsappLink()}
-                target="_blank"
-                rel="noopener noreferrer"
+                event="click_whatsapp"
+                location="electrical_hero"
                 className="min-h-[44px] inline-flex items-center text-white/85 underline underline-offset-4 text-[14px] font-semibold px-2 hover:text-white transition-colors"
               >
                 WhatsApp us
-              </a>
+              </TrackedLink>
             </div>
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* Trust strip */}
       <TrustStrip />
 
       {/* Services catalog */}
-      <section id="services" className="bg-[#F8F8F6] py-16 border-b border-[#E5E7EB]">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="mb-10 text-center">
-            <p className="text-gold text-[11px] tracking-[0.2em] uppercase font-semibold mb-2">What we do</p>
-            <h2 className="text-navy text-[28px] md:text-[34px] font-bold">Electrical Services</h2>
+      <Section tone="cream" id="services" className="border-b border-line">
+        <Container>
+          <Reveal className="mb-10 text-center">
+            <Eyebrow muted center>
+              What we do
+            </Eyebrow>
+            <h2 className="font-display text-[clamp(26px,3.4vw,40px)] text-navy">Electrical Services</h2>
             <p className="text-navy/55 text-[14px] mt-3 max-w-xl mx-auto">
               Quote-based pricing tailored to your job — more services will be added over time.
             </p>
-          </div>
+          </Reveal>
 
           <div className="grid gap-5 sm:grid-cols-2 md:grid-cols-3">
-            {catalog.map((item) => (
-              <div
-                key={item.title}
-                className="group bg-white border border-line hover:border-gold hover:shadow-md transition-all duration-200 p-6 flex flex-col items-start"
-              >
-                <div className="w-11 h-11 rounded-full bg-cream border border-gold/25 flex items-center justify-center text-gold mb-4">
-                  <ServiceIcon name={item.icon} />
-                </div>
-                <h3 className="text-navy text-[16px] font-bold mb-2 leading-snug">{item.title}</h3>
-                <p className="text-navy/60 text-[13.5px] leading-relaxed">{item.desc}</p>
-              </div>
+            {catalog.map((item, i) => (
+              <Reveal key={item.title} delay={Math.min(i, 3) * 80}>
+                <Card className="h-full p-6 flex flex-col items-start">
+                  {/* Decorative icon */}
+                  <div className="w-11 h-11 rounded-full bg-cream border border-gold/25 flex items-center justify-center text-gold mb-4">
+                    <ServiceIcon name={item.icon} />
+                  </div>
+                  <h3 className="text-navy text-[16px] font-bold mb-2 leading-snug">{item.title}</h3>
+                  <p className="text-navy/60 text-[13.5px] leading-relaxed">{item.desc}</p>
+                </Card>
+              </Reveal>
             ))}
           </div>
 
-          <p className="mt-10 text-center text-navy/55 text-[14px]">
-            Don&apos;t see your job listed?{" "}
-            <Link href="#booking" className="text-gold underline underline-offset-4 hover:text-navy transition-colors">
-              Describe it in a booking
-            </Link>{" "}
-            — if it&apos;s electrical, we&apos;ll quote it.
-          </p>
-        </div>
-      </section>
+          <Reveal>
+            <p className="mt-10 text-center text-navy/55 text-[14px]">
+              Don&apos;t see your job listed?{" "}
+              <Link href="#booking" className="text-gold-deep underline underline-offset-4 hover:text-navy transition-colors">
+                Describe it in a booking
+              </Link>{" "}
+              — if it&apos;s electrical, we&apos;ll quote it.
+            </p>
+          </Reveal>
+        </Container>
+      </Section>
 
       {/* Booking form — directly after the catalog */}
-      <section id="booking" className="bg-[#F8F8F6] py-16">
+      <Section tone="cream" id="booking" className="border-b border-line">
         <div className="mx-auto max-w-2xl px-6">
-          <div className="text-center mb-10">
-            <p className="text-gold text-[11px] tracking-[0.2em] uppercase font-semibold mb-2">Book online</p>
-            <h2 className="text-navy text-[28px] font-bold">Request a Callout</h2>
-          </div>
-          <div className="bg-white border border-[#E5E7EB] p-8">
+          <Reveal className="text-center mb-10">
+            <Eyebrow muted center>
+              Book online
+            </Eyebrow>
+            <h2 className="font-display text-[clamp(26px,3.4vw,40px)] text-navy">Request a Callout</h2>
+          </Reveal>
+          <Card className="p-8 bg-white">
             <ElectricalBookingForm />
-          </div>
+          </Card>
         </div>
-      </section>
+      </Section>
 
       {/* How It Works */}
-      <section className="bg-white border-b border-[#E5E7EB] py-16">
-        <div className="mx-auto max-w-5xl px-6">
-          <div className="text-center mb-12">
-            <p className="text-gold text-[11px] tracking-[0.2em] uppercase font-semibold mb-2">Simple process</p>
-            <h2 className="text-navy text-[28px] md:text-[34px] font-bold">How It Works</h2>
-          </div>
+      <Section tone="white" className="border-b border-line">
+        <div className="mx-auto max-w-5xl">
+          <Reveal className="text-center mb-12">
+            <Eyebrow muted center>
+              Simple process
+            </Eyebrow>
+            <h2 className="font-display text-[clamp(26px,3.4vw,40px)] text-navy">How It Works</h2>
+          </Reveal>
           <ol className="grid gap-10 md:grid-cols-4">
-            {howItWorks.map((step) => (
-              <li key={step.n} className="flex flex-col items-center text-center">
-                <div className="w-14 h-14 rounded-full bg-[#F8F8F6] flex items-center justify-center mb-4 border border-[#E5E7EB]">
-                  <span className="font-bold text-gold text-[18px]">{step.n}</span>
-                </div>
-                <h3 className="font-bold text-navy text-[15px] mb-1.5">{step.title}</h3>
-                <p className="text-navy/55 text-[13px] leading-relaxed">{step.body}</p>
+            {howItWorks.map((step, i) => (
+              <li key={step.n}>
+                <Reveal delay={i * 80}>
+                  <div className="flex flex-col items-center text-center">
+                    <div className="w-14 h-14 rounded-full bg-cream flex items-center justify-center mb-4 border border-line">
+                      {/* Decorative step number */}
+                      <span className="font-bold text-gold text-[18px]">{step.n}</span>
+                    </div>
+                    <h3 className="font-bold text-navy text-[15px] mb-1.5">{step.title}</h3>
+                    <p className="text-navy/55 text-[13px] leading-relaxed">{step.body}</p>
+                  </div>
+                </Reveal>
               </li>
             ))}
           </ol>
         </div>
-      </section>
+      </Section>
 
       {/* Recent Work */}
-      <section className="bg-white py-16 border-b border-[#E5E7EB]">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="mb-10 text-center">
-            <p className="text-gold text-[11px] tracking-[0.2em] uppercase font-semibold mb-2">On the job</p>
-            <h2 className="text-navy text-[28px] md:text-[34px] font-bold">Recent Work</h2>
-          </div>
+      <Section tone="white" className="border-b border-line">
+        <Container>
+          <Reveal className="mb-10 text-center">
+            <Eyebrow muted center>
+              On the job
+            </Eyebrow>
+            <h2 className="font-display text-[clamp(26px,3.4vw,40px)] text-navy">Recent Work</h2>
+          </Reveal>
           <div className="grid gap-5 sm:grid-cols-3">
             {recentWork.map((photo, i) => (
               <Reveal key={photo.src} delay={Math.min(i, 3) * 80}>
@@ -313,16 +337,18 @@ export default function ElectricalPage() {
               </Reveal>
             ))}
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
 
       {/* FAQ */}
-      <section id="callout-faq" className="bg-white py-16 border-b border-[#E5E7EB]">
-        <div className="mx-auto max-w-3xl px-6">
-          <div className="text-center mb-10">
-            <p className="text-gold text-[11px] tracking-[0.2em] uppercase font-semibold mb-2">Good to know</p>
-            <h2 className="text-navy text-[28px] font-bold">Frequently Asked Questions</h2>
-          </div>
+      <Section tone="white" id="callout-faq" className="border-b border-line">
+        <div className="mx-auto max-w-3xl">
+          <Reveal className="text-center mb-10">
+            <Eyebrow muted center>
+              Good to know
+            </Eyebrow>
+            <h2 className="font-display text-[clamp(26px,3.4vw,40px)] text-navy">Frequently Asked Questions</h2>
+          </Reveal>
 
           <div className="divide-y divide-gold/20 border border-gold/20">
             {faqs.map((item) => (
@@ -333,36 +359,44 @@ export default function ElectricalPage() {
             ))}
           </div>
         </div>
-      </section>
+      </Section>
 
       {/* Final CTA */}
-      <section className="bg-navy py-16 md:py-24">
+      <Section tone="navy">
         <div className="mx-auto max-w-2xl px-6 text-center">
-          <p className="text-gold-light text-[11px] tracking-[0.2em] uppercase font-semibold mb-4">Ready to book?</p>
-          <h2 className="font-display text-white text-[clamp(26px,3.4vw,40px)] mb-5 leading-tight">
-            Get a licensed electrician out today
-          </h2>
-          <p className="text-white/65 text-[15px] mb-8 leading-relaxed max-w-[62ch] mx-auto">
-            Transparent quoting, no surprises. Book online and we&apos;ll be in touch to confirm a time.
-          </p>
-          <div className="flex flex-col sm:flex-row sm:items-center justify-center gap-3">
-            <Button href="#booking" variant="primary">
-              Book a Callout
-            </Button>
-            <Button href={telLink} variant="outline-light" ariaLabel={`Call ${SITE.phoneDisplay}`}>
-              Call {SITE.phoneDisplay}
-            </Button>
-            <a
-              href={whatsappLink()}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="min-h-[44px] inline-flex items-center text-gold-light underline underline-offset-4 text-[14px] font-semibold px-2 hover:text-white transition-colors"
-            >
-              WhatsApp us
-            </a>
-          </div>
+          <Reveal>
+            <Eyebrow center>Ready to book?</Eyebrow>
+            <h2 className="font-display text-white text-[clamp(26px,3.4vw,40px)] mb-5 leading-tight">
+              Get a licensed electrician out today
+            </h2>
+            <p className="text-white/65 text-[15px] mb-8 leading-relaxed max-w-[62ch] mx-auto">
+              Transparent quoting, no surprises. Book online and we&apos;ll be in touch to confirm a time.
+            </p>
+            <div className="flex flex-col sm:flex-row sm:items-center justify-center gap-3">
+              <Button href="#booking" variant="primary">
+                Book a Callout
+              </Button>
+              <TrackedLink
+                href={telLink}
+                event="click_call"
+                location="electrical_final_cta"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3 min-h-[44px] text-[14px] font-semibold tracking-wide transition-colors border border-white/40 text-white hover:bg-white hover:text-navy"
+                ariaLabel={`Call ${SITE.phoneDisplay}`}
+              >
+                Call {SITE.phoneDisplay}
+              </TrackedLink>
+              <TrackedLink
+                href={whatsappLink()}
+                event="click_whatsapp"
+                location="electrical_final_cta"
+                className="min-h-[44px] inline-flex items-center text-gold-light underline underline-offset-4 text-[14px] font-semibold px-2 hover:text-white transition-colors"
+              >
+                WhatsApp us
+              </TrackedLink>
+            </div>
+          </Reveal>
         </div>
-      </section>
+      </Section>
     </>
   );
 }
