@@ -78,7 +78,6 @@ const jsonLd = {
   "@type": "Electrician",
   name: SITE.name,
   url: "https://www.erga.co.za",
-  telephone: SITE.phoneTel,
   email: SITE.email,
   areaServed: "Alberton, Gauteng",
 };

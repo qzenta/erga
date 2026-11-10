@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import ErgoLogo from "@/components/ui/ErgoLogo";
 import TrackedLink from "@/components/TrackedLink";
-import { SITE, whatsappLink, telLink } from "@/lib/site";
+import { SITE, whatsappLink, mailLink } from "@/lib/site";
 
 /* ─── Confirmed partners — prominent placement, they're special ──────────
    Sikatrix intentionally left out pending Daniel's confirmation (2 Jul
@@ -44,13 +44,13 @@ const legalLinks = [
 
 export default function Footer() {
   return (
-    <footer className="mt-auto bg-[#1B2A4A] text-white">
-      <div className="h-0.5 bg-[#9A7B2F]" />
+    <footer className="mt-auto bg-navy text-white">
+      <div className="h-0.5 bg-gold" />
 
       {/* Our Partners — prominent, distinct band (Sikatrix pending confirmation) */}
       <div className="border-b border-white/10 bg-white/[0.04]">
         <div className="mx-auto max-w-6xl px-6 py-8">
-          <p className="text-center text-[11px] tracking-[0.2em] uppercase text-[#9A7B2F] font-semibold mb-5">
+          <p className="text-center text-[11px] tracking-[0.2em] uppercase text-gold-light font-semibold mb-5">
             Our Partners
           </p>
           <div className="flex flex-wrap items-center justify-center gap-5">
@@ -63,7 +63,7 @@ export default function Footer() {
                   target={external ? "_blank" : undefined}
                   rel={external ? "noopener noreferrer" : undefined}
                   aria-label={p.name}
-                  className="group flex items-center justify-center bg-white border border-white/10 hover:border-[#9A7B2F] transition-colors"
+                  className="group flex items-center justify-center bg-white border border-white/10 hover:border-gold transition-colors"
                   style={{ width: 210, height: 92, padding: "14px 24px" }}
                 >
                   {p.src ? (
@@ -77,7 +77,7 @@ export default function Footer() {
                       />
                     </div>
                   ) : (
-                    <span className="text-center text-[#1B2A4A] text-[14px] font-bold leading-snug group-hover:text-[#9A7B2F] transition-colors">
+                    <span className="text-center text-navy text-[14px] font-bold leading-snug group-hover:text-gold transition-colors">
                       {p.name}
                     </span>
                   )}
@@ -105,13 +105,13 @@ export default function Footer() {
           </p>
           {/* Socials — hidden until real profile URLs exist (was linking to "#") */}
           {/* <div className="flex items-center gap-3 mt-1">
-            <a href="#" aria-label="LinkedIn" className="text-white/60 hover:text-[#9A7B2F] transition-colors">
+            <a href="#" aria-label="LinkedIn" className="text-white/60 hover:text-gold transition-colors">
               <LinkedInIcon />
             </a>
-            <a href="#" aria-label="Facebook" className="text-white/60 hover:text-[#9A7B2F] transition-colors">
+            <a href="#" aria-label="Facebook" className="text-white/60 hover:text-gold transition-colors">
               <FacebookIcon />
             </a>
-            <a href="#" aria-label="Instagram" className="text-white/60 hover:text-[#9A7B2F] transition-colors">
+            <a href="#" aria-label="Instagram" className="text-white/60 hover:text-gold transition-colors">
               <InstagramIcon />
             </a>
           </div> */}
@@ -119,7 +119,7 @@ export default function Footer() {
 
         {/* Col 2 — Navigate */}
         <div>
-          <h3 className="text-[11px] tracking-[0.18em] uppercase text-[#9A7B2F] font-semibold mb-4">
+          <h3 className="text-[11px] tracking-[0.18em] uppercase text-gold-light font-semibold mb-4">
             Navigate
           </h3>
           <ul className="space-y-2.5">
@@ -135,7 +135,7 @@ export default function Footer() {
 
         {/* Col 3 — Services */}
         <div>
-          <h3 className="text-[11px] tracking-[0.18em] uppercase text-[#9A7B2F] font-semibold mb-4">
+          <h3 className="text-[11px] tracking-[0.18em] uppercase text-gold-light font-semibold mb-4">
             Services
           </h3>
           <ul className="space-y-2.5">
@@ -151,7 +151,7 @@ export default function Footer() {
 
         {/* Col 4 — Resources */}
         <div>
-          <h3 className="text-[11px] tracking-[0.18em] uppercase text-[#9A7B2F] font-semibold mb-4">
+          <h3 className="text-[11px] tracking-[0.18em] uppercase text-gold-light font-semibold mb-4">
             Resources
           </h3>
           <ul className="space-y-2.5">
@@ -167,28 +167,20 @@ export default function Footer() {
 
         {/* Col 4 — Contact */}
         <div className="flex flex-col gap-4">
-          <h3 className="text-[11px] tracking-[0.18em] uppercase text-[#9A7B2F] font-semibold">
+          <h3 className="text-[11px] tracking-[0.18em] uppercase text-gold-light font-semibold">
             Contact Us
           </h3>
           <a
-            href={`mailto:${SITE.email}`}
-            className="text-white/80 hover:text-[#9A7B2F] text-[13px] transition-colors"
+            href={mailLink}
+            className="text-white font-semibold hover:text-gold-light text-[13px] transition-colors underline underline-offset-4 decoration-white/30"
           >
             {SITE.email}
           </a>
           <TrackedLink
-            href={telLink}
-            event="click_call"
-            location="footer"
-            className="text-white/80 hover:text-[#9A7B2F] text-[13px] font-semibold transition-colors"
-          >
-            {SITE.phoneDisplay}
-          </TrackedLink>
-          <TrackedLink
             href={whatsappLink()}
             event="click_whatsapp"
             location="footer"
-            className="text-white/80 hover:text-[#9A7B2F] text-[13px] transition-colors self-start"
+            className="text-white/80 hover:text-gold text-[13px] transition-colors self-start"
           >
             Chat on WhatsApp
           </TrackedLink>
@@ -204,7 +196,7 @@ export default function Footer() {
           </div>
           <Link
             href="/contact"
-            className="mt-1 inline-flex items-center justify-center px-5 py-2.5 bg-[#9A7B2F] text-white text-[12px] font-semibold tracking-wide hover:bg-[#c2a14d] transition-colors self-start"
+            className="mt-1 inline-flex items-center justify-center px-5 py-2.5 bg-gold-deep text-white text-[12px] font-semibold tracking-wide hover:bg-white hover:text-navy transition-colors self-start"
           >
             Send a message
           </Link>

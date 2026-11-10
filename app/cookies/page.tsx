@@ -4,7 +4,7 @@ import PageBanner from "@/components/PageBanner";
 export const metadata: Metadata = {
   title: "Cookie Policy",
   description:
-    "How Erga Properties uses cookies. This website uses only functional cookies — no tracking, analytics, or advertising cookies.",
+    "How Erga uses cookies and similar identifiers, including analytics from Google Analytics 4 and Microsoft Clarity.",
 };
 
 export default function CookiesPage() {
@@ -15,7 +15,7 @@ export default function CookiesPage() {
       <section className="bg-white">
         <div className="mx-auto max-w-3xl px-6 py-20">
           <p className="text-sm text-navy/60 tracking-wide uppercase text-center mb-12">
-            Last updated: 20 April 2026
+            Last updated: 10 November 2026
           </p>
 
           <div className="space-y-8 text-navy/90 leading-relaxed">
@@ -27,16 +27,18 @@ export default function CookiesPage() {
 
             <Block title="How We Use Cookies">
               www.erga.co.za is a content website with no login, no
-              personalised dashboards, and no advertising. We use only a small
-              number of <strong>functional cookies</strong> strictly necessary
-              for basic site operation &mdash; for example, to maintain the
-              state of the navigation menu or to support secure page delivery
-              via our hosting platform.
+              personalised dashboards, and no advertising. We use a small
+              number of <strong>functional cookies</strong> necessary for
+              basic site operation &mdash; for example, to maintain the state
+              of the navigation menu or to support secure page delivery via
+              our hosting platform. We also use analytics cookies and
+              identifiers from Google Analytics 4 and Microsoft Clarity to
+              understand how the site is used (see Third-Party Services
+              below).
             </Block>
 
             <Block title="What We Do Not Do">
               <ul className="list-disc pl-6 space-y-1">
-                <li>We do not use tracking or analytics cookies</li>
                 <li>We do not use third-party advertising cookies</li>
                 <li>We do not use cookies to profile visitors</li>
                 <li>We do not sell cookie-derived information to anyone</li>
@@ -45,15 +47,23 @@ export default function CookiesPage() {
 
             <Block title="Managing Cookies">
               You can control or delete cookies through your browser settings
-              at any time. Because we do not rely on analytics or advertising
-              cookies, disabling cookies will not impair your use of the site.
+              at any time. Blocking analytics cookies will not impair your
+              use of the site.
             </Block>
 
             <Block title="Third-Party Services">
-              Our contact form is powered by Formspree (formspree.io).
-              Formspree may set functional cookies required for the form to
-              operate. See Formspree&apos;s own privacy and cookie information
-              on their website for details.
+              We use the following third-party services on this website:
+              <ul className="list-disc pl-6 mt-3 space-y-1">
+                <li>Google Analytics 4 — analytics</li>
+                <li>Microsoft Clarity — session recordings and heatmaps</li>
+                <li>Brevo — sending enquiry and booking emails</li>
+                <li>Google Maps — map display on the contact page</li>
+                <li>WhatsApp (wa.me) — chat links</li>
+              </ul>
+              Questions about privacy can be sent to{" "}
+              <a href="mailto:info@erga.co.za" className="text-gold-deep hover:underline">
+                info@erga.co.za
+              </a>.
             </Block>
 
             <Block title="Changes to This Policy">
@@ -63,7 +73,7 @@ export default function CookiesPage() {
 
             <Block title="Contact">
               Questions about this policy can be sent to{" "}
-              <a href="mailto:info@erga.co.za" className="text-gold hover:underline">
+              <a href="mailto:info@erga.co.za" className="text-gold-deep hover:underline">
                 info@erga.co.za
               </a>.
             </Block>

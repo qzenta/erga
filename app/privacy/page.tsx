@@ -15,7 +15,7 @@ export default function PrivacyPage() {
       <section className="bg-white">
         <div className="mx-auto max-w-3xl px-6 py-20">
           <p className="text-sm text-navy/60 tracking-wide uppercase text-center mb-12">
-            Last updated: 20 April 2026
+            Last updated: 10 November 2026
           </p>
 
           <div className="space-y-8 text-navy/90 leading-relaxed">
@@ -38,23 +38,30 @@ export default function PrivacyPage() {
                 <li>The enquiry type you select</li>
                 <li>The content of your message</li>
               </ul>
+              When you book an electrical callout we collect your name, phone
+              number, address or suburb, a description of the problem, your
+              preferred time, optionally your email address, and a record of
+              your consent (timestamp and IP address).
+              Google Analytics 4 and Microsoft Clarity collect website usage
+              and device information; Microsoft Clarity also records sessions
+              and produces heatmaps.
             </Block>
 
             <Block title="How We Use Your Information">
               We use the information you submit solely to respond to your
-              enquiry and, where relevant, to provide further information about
-              our property management services. We do not use your information
+              enquiry or callout booking and, where relevant, to provide
+              further information about our electrical and property management
+              services. We do not use your information
               for automated decision-making or profiling.
             </Block>
 
             <Block title="How Your Information Is Stored">
-              Contact form submissions are processed through Formspree
-              (formspree.io), a third-party form service that may store data on
-              servers located outside South Africa. Submissions are delivered
-              to our inbox at{" "}
-              <a href="mailto:info@erga.co.za" className="text-gold hover:underline">
+              Enquiry and booking submissions are sent from our website to our
+              email provider Brevo, which delivers them to our inbox at{" "}
+              <a href="mailto:info@erga.co.za" className="text-gold-deep hover:underline">
                 info@erga.co.za
-              </a>.
+              </a>. Brevo is a third-party email service and may process data
+              outside South Africa.
             </Block>
 
             <Block title="Sharing Your Information">
@@ -78,8 +85,23 @@ export default function PrivacyPage() {
             <Block title="Data Requests">
               To exercise any of the rights above, or to ask a question about
               how we handle your information, contact{" "}
-              <a href="mailto:daniel@erga.co.za" className="text-gold hover:underline">
+              <a href="mailto:daniel@erga.co.za" className="text-gold-deep hover:underline">
                 daniel@erga.co.za
+              </a>.
+            </Block>
+
+            <Block title="Third-Party Services">
+              This website uses the following third-party services:
+              <ul className="list-disc pl-6 mt-3 space-y-1">
+                <li>Google Analytics 4 — analytics</li>
+                <li>Microsoft Clarity — session recordings and heatmaps</li>
+                <li>Brevo — sending enquiry and booking emails</li>
+                <li>Google Maps — map display on the contact page</li>
+                <li>WhatsApp (wa.me) — chat links</li>
+              </ul>
+              Questions about privacy can be sent to{" "}
+              <a href="mailto:info@erga.co.za" className="text-gold-deep hover:underline">
+                info@erga.co.za
               </a>.
             </Block>
 
@@ -99,7 +121,7 @@ export default function PrivacyPage() {
             <Block title="Contact">
               Erga Concepts (Pty) Ltd<br />
               37 Kamferbos Street, Brackendowns, Alberton, 1448<br />
-              <a href="mailto:daniel@erga.co.za" className="text-gold hover:underline">
+              <a href="mailto:daniel@erga.co.za" className="text-gold-deep hover:underline">
                 daniel@erga.co.za
               </a>
             </Block>

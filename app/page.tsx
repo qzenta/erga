@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { SITE, whatsappLink, telLink } from "@/lib/site";
+import { whatsappLink, mailLink } from "@/lib/site";
 import TrustStrip from "@/components/TrustStrip";
 import CircuitTrace from "@/components/CircuitTrace";
 import TrackedLink from "@/components/TrackedLink";
@@ -114,21 +114,20 @@ export default function HomePage() {
                   Book a Callout
                 </TrackedLink>
                 <TrackedLink
-                  href={telLink}
-                  event="click_call"
-                  location="home_hero"
-                  className="inline-flex items-center justify-center gap-2 px-7 py-3 min-h-[44px] text-[14px] font-semibold tracking-wide transition-colors border border-white/40 text-white hover:bg-white hover:text-navy"
-                  ariaLabel={`Call ${SITE.phoneDisplay}`}
-                >
-                  Call {SITE.phoneDisplay}
-                </TrackedLink>
-                <TrackedLink
                   href={whatsappLink()}
                   event="click_whatsapp"
                   location="home_hero"
-                  className="text-white/85 underline underline-offset-4 text-[14px] font-semibold tracking-wide px-2 py-2 hover:text-white transition-colors"
+                  className="inline-flex items-center justify-center gap-2 px-7 py-3 min-h-[44px] text-[14px] font-semibold tracking-wide transition-colors border border-white/40 text-white hover:bg-white hover:text-navy"
                 >
                   WhatsApp us
+                </TrackedLink>
+                <TrackedLink
+                  href={mailLink}
+                  event="click_email"
+                  location="home_hero"
+                  className="text-white/85 underline underline-offset-4 text-[14px] font-semibold tracking-wide px-2 py-2 hover:text-white transition-colors"
+                >
+                  info@erga.co.za
                 </TrackedLink>
               </div>
             </div>
@@ -278,21 +277,20 @@ export default function HomePage() {
                   Book a Callout
                 </TrackedLink>
                 <TrackedLink
-                  href={telLink}
-                  event="click_call"
-                  location="home_final_cta"
-                  className="text-gold-deep underline underline-offset-4 text-[14px] font-semibold px-2 py-2 hover:text-navy transition-colors"
-                  ariaLabel={`Call ${SITE.phoneDisplay}`}
-                >
-                  Call {SITE.phoneDisplay}
-                </TrackedLink>
-                <TrackedLink
                   href={whatsappLink()}
                   event="click_whatsapp"
                   location="home_final_cta"
-                  className="min-h-[44px] inline-flex items-center text-gold-deep underline underline-offset-4 text-[14px] font-semibold px-2 hover:text-navy transition-colors"
+                  className="inline-flex items-center justify-center gap-2 px-7 py-3 min-h-[44px] text-[14px] font-semibold tracking-wide transition-colors border border-navy/40 text-navy hover:bg-navy hover:text-white"
                 >
                   WhatsApp us
+                </TrackedLink>
+                <TrackedLink
+                  href={mailLink}
+                  event="click_email"
+                  location="home_final_cta"
+                  className="min-h-[44px] inline-flex items-center text-gold-deep underline underline-offset-4 text-[14px] font-semibold px-2 hover:text-navy transition-colors"
+                >
+                  info@erga.co.za
                 </TrackedLink>
               </div>
             </Reveal>

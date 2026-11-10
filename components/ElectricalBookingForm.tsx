@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { SITE, whatsappLink, telLink } from "@/lib/site";
+import { SITE, whatsappLink, mailLink } from "@/lib/site";
 import { trackEvent, trackGenerateLead } from "@/lib/analytics";
 
 type Status = "idle" | "submitting" | "success" | "error";
@@ -88,13 +88,13 @@ export default function ElectricalBookingForm() {
       } else {
         setErrorMsg(
           json?.error ??
-            "We couldn't submit your booking. Please try again or call us directly.",
+            "We couldn't submit your booking. Please try again, or WhatsApp or email us directly.",
         );
         setStatus("error");
       }
     } catch {
       setErrorMsg(
-        `Network error. Please check your connection or email us directly at ${SITE.email}.`,
+        `Network error. Please check your connection, or WhatsApp or email us directly at ${SITE.email}.`,
       );
       setStatus("error");
     }
@@ -114,11 +114,11 @@ export default function ElectricalBookingForm() {
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-3">
           <a
-            href={telLink}
-            onClick={() => trackEvent("click_call", { location: "booking_success" })}
+            href={mailLink}
+            onClick={() => trackEvent("click_email", { location: "booking_success" })}
             className="inline-flex items-center justify-center min-h-[44px] px-6 bg-gold-deep text-white text-sm font-semibold hover:bg-navy transition-colors"
           >
-            Call {SITE.phoneDisplay}
+            Email {SITE.email}
           </a>
           <a
             href={whatsappLink()}
