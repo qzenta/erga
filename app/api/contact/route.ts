@@ -189,20 +189,24 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  let body: Record<string, string>;
+  let body: Record<string, unknown>;
   try {
     body = await req.json();
   } catch {
     return NextResponse.json({ error: "Invalid request." }, { status: 400 });
   }
 
-  const { name, email, phone = "", enquiryType = "", message, _trap } = body;
+  // Destructure plainly, then derive cleaned strings below — a missing form
+  // field arrives as null (not undefined), so `?? ""` guards every read.
+  const { name, email, phone, enquiryType, message, _trap } = body;
 
   if (_trap) return NextResponse.json({ ok: true });
 
-  const nameClean = name?.trim() ?? "";
-  const emailClean = email?.trim() ?? "";
-  const messageClean = message?.trim() ?? "";
+  const nameClean = String(name ?? "").trim();
+  const emailClean = String(email ?? "").trim();
+  const phoneClean = String(phone ?? "").trim();
+  const enquiryTypeClean = String(enquiryType ?? "").trim();
+  const messageClean = String(message ?? "").trim();
 
   if (!nameClean || !emailClean || !messageClean) {
     return NextResponse.json({ error: "Please fill in all required fields." }, { status: 400 });
@@ -219,6 +223,23 @@ export async function POST(req: NextRequest) {
     );
   }
 
+  // Length caps
+  const caps: Record<string, { value: string; max: number }> = {
+    name: { value: nameClean, max: 100 },
+    email: { value: emailClean, max: 254 },
+    phone: { value: phoneClean, max: 30 },
+    enquiryType: { value: enquiryTypeClean, max: 60 },
+    message: { value: messageClean, max: 2000 },
+  };
+  for (const { value, max } of Object.values(caps)) {
+    if (value.length > max) {
+      return NextResponse.json(
+        { error: "Please shorten your answer — one or more fields are too long." },
+        { status: 400 },
+      );
+    }
+  }
+
   const timestamp = sast();
 
   try {
@@ -226,12 +247,12 @@ export async function POST(req: NextRequest) {
       sendEmail({
         to: { email: ERGA_EMAIL },
         replyTo: { email: emailClean },
-        subject: `New enquiry from ${nameClean}${enquiryType ? ` — ${enquiryType}` : ""}`,
+        subject: `New enquiry from ${nameClean}${enquiryTypeClean ? ` — ${enquiryTypeClean}` : ""}`,
         html: notificationHtml({
           name: nameClean,
           email: emailClean,
-          phone: phone.trim(),
-          enquiryType: enquiryType.trim(),
+          phone: phoneClean,
+          enquiryType: enquiryTypeClean,
           message: messageClean,
           timestamp,
         }),

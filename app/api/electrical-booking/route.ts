@@ -175,7 +175,7 @@ export async function POST(req: NextRequest) {
   } catch (err) {
     console.error("[electrical-booking/route] Brevo error:", err);
     return NextResponse.json(
-      { error: "Failed to submit your booking. Please try again or call us directly." },
+      { error: "Failed to submit your booking. Please try again, or WhatsApp or email us directly." },
       { status: 500 },
     );
   }

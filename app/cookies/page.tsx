@@ -36,7 +36,11 @@ export default function CookiesPage() {
 
             <Block title="What We Do Not Do">
               <ul className="list-disc pl-6 space-y-1">
-                <li>We do not use tracking or analytics cookies</li>
+                <li>
+                  We do use analytics cookies and identifiers from Google
+                  Analytics 4 and Microsoft Clarity (session recordings and
+                  heatmaps) — see Third-Party Services below
+                </li>
                 <li>We do not use third-party advertising cookies</li>
                 <li>We do not use cookies to profile visitors</li>
                 <li>We do not sell cookie-derived information to anyone</li>
@@ -50,10 +54,24 @@ export default function CookiesPage() {
             </Block>
 
             <Block title="Third-Party Services">
-              Our contact form is powered by Formspree (formspree.io).
-              Formspree may set functional cookies required for the form to
-              operate. See Formspree&apos;s own privacy and cookie information
-              on their website for details.
+              We use the following third-party services on this website:
+              <ul className="list-disc pl-6 mt-3 space-y-1">
+                <li>Google Analytics 4 — analytics</li>
+                <li>Microsoft Clarity — session recordings and heatmaps</li>
+                <li>Brevo — sending enquiry and booking emails</li>
+                <li>
+                  Formspree (formspree.io) — powering the contact form;
+                  Formspree may set functional cookies required for the form
+                  to operate. See Formspree&apos;s own privacy and cookie
+                  information on their website for details.
+                </li>
+                <li>Google Maps — map display on the contact page</li>
+                <li>WhatsApp (wa.me) — chat links</li>
+              </ul>
+              Questions about privacy can be sent to{" "}
+              <a href="mailto:info@erga.co.za" className="text-gold hover:underline">
+                info@erga.co.za
+              </a>.
             </Block>
 
             <Block title="Changes to This Policy">

@@ -83,6 +83,21 @@ export default function PrivacyPage() {
               </a>.
             </Block>
 
+            <Block title="Third-Party Services">
+              This website uses the following third-party services:
+              <ul className="list-disc pl-6 mt-3 space-y-1">
+                <li>Google Analytics 4 — analytics</li>
+                <li>Microsoft Clarity — session recordings and heatmaps</li>
+                <li>Brevo — sending enquiry and booking emails</li>
+                <li>Google Maps — map display on the contact page</li>
+                <li>WhatsApp (wa.me) — chat links</li>
+              </ul>
+              Questions about privacy can be sent to{" "}
+              <a href="mailto:info@erga.co.za" className="text-gold hover:underline">
+                info@erga.co.za
+              </a>.
+            </Block>
+
             <Block title="Retention">
               We retain enquiry information for as long as is reasonably
               necessary to respond to and follow up on your enquiry, after

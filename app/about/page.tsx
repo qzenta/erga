@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import PageBanner from "@/components/PageBanner";
 
@@ -20,27 +19,38 @@ export default function AboutPage() {
         breadcrumbs={[{ label: "About Us" }]}
       />
 
+      {/* Electrical + property intro — uses only home-page wording */}
+      <section className="bg-cream border-b border-line">
+        <div className="mx-auto max-w-3xl px-6 py-10">
+          <p className="text-navy/80 leading-relaxed text-16 text-center">
+            Erga is property management first — and Alberton&apos;s trusted
+            electrician too: licensed inspection, transparent quoting, no
+            surprises, for owners and tenants across Gauteng.
+          </p>
+        </div>
+      </section>
+
       {/* Who we are */}
       <section className="bg-white">
         <div className="mx-auto max-w-6xl px-6 py-16 grid gap-12 md:grid-cols-2 items-center">
           <div>
-            <p className="text-[#9A7B2F] text-[12px] tracking-[0.2em] uppercase font-medium mb-3">The company</p>
-            <h2 className="text-[32px] text-[#1B2A4A] font-bold mb-5 leading-tight">
+            <p className="text-gold text-[12px] tracking-[0.2em] uppercase font-medium mb-3">The company</p>
+            <h2 className="text-[32px] text-navy font-bold mb-5 leading-tight">
               Built on discipline, trust, and results
             </h2>
-            <div className="w-10 h-0.5 bg-[#9A7B2F] mb-6" />
-            <p className="text-[#1B2A4A]/70 leading-relaxed mb-5">
+            <div className="w-10 h-0.5 bg-gold mb-6" />
+            <p className="text-navy/70 leading-relaxed mb-5">
               Erga Concepts (Pty) Ltd was incorporated in 2015 and trades as Erga Properties. Based in Alberton, Johannesburg, we serve property owners and tenants across Gauteng.
             </p>
-            <p className="text-[#1B2A4A]/65 leading-relaxed mb-5">
+            <p className="text-navy/65 leading-relaxed mb-5">
               Our approach is grounded in financial discipline, professional conduct, and transparent communication. We combine hands-on property oversight with rigorous financial administration — backed by our partnership with Sikatrix Business Accountants.
             </p>
-            <p className="text-[#1B2A4A]/65 leading-relaxed mb-8">
+            <p className="text-navy/65 leading-relaxed mb-8">
               Whether you own a single unit or a large portfolio, Erga delivers reliable, consistent management that protects and grows your property investment.
             </p>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 text-[13px] font-medium text-[#1B2A4A] hover:text-[#9A7B2F] transition-colors group"
+              className="inline-flex items-center gap-2 text-[13px] font-medium text-navy hover:text-gold transition-colors group"
             >
               Contact us today
               <svg className="group-hover:translate-x-1 transition-transform" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -48,41 +58,34 @@ export default function AboutPage() {
               </svg>
             </Link>
           </div>
+          {/* Text-only right column — the stock "team meeting" photo was removed.
+              The 2015 badge is an existing timeline claim, kept as text. */}
           <div className="relative">
-            <div className="relative overflow-hidden" style={{ aspectRatio: "4/3" }}>
-              <Image
-                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80&auto=format&fit=crop"
-                alt="Erga Properties team meeting"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-            </div>
-            <div className="absolute -bottom-5 -right-5 bg-[#9A7B2F] text-white px-6 py-5 hidden md:block">
-              <p className="font-serif text-[36px] leading-none">2015</p>
-              <p className="text-white/70 text-[12px] mt-1">Est. Alberton, Gauteng</p>
+            <div className="inline-block border border-line bg-cream px-6 py-5">
+              <p className="font-serif text-[36px] leading-none text-gold-deep">2015</p>
+              <p className="text-navy/60 text-[12px] mt-1">Est. Alberton, Gauteng</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Journey */}
-      <section className="bg-[#F8F8F6] border-t border-[#E5E7EB]">
+      <section className="bg-[#F8F8F6] border-t border-line">
         <div className="mx-auto max-w-5xl px-6 py-16">
           <div className="text-center mb-12">
-            <p className="text-[#9A7B2F] text-[12px] tracking-[0.2em] uppercase font-medium mb-2">Our story</p>
-            <h2 className="text-[32px] text-[#1B2A4A] font-bold">Our journey</h2>
+            <p className="text-gold text-[12px] tracking-[0.2em] uppercase font-medium mb-2">Our story</p>
+            <h2 className="text-[32px] text-navy font-bold">Our journey</h2>
           </div>
           <div className="relative">
-            <div className="absolute left-6 top-0 bottom-0 w-px bg-[#9A7B2F]/30 md:left-1/2" aria-hidden="true" />
+            <div className="absolute left-6 top-0 bottom-0 w-px bg-gold/30 md:left-1/2" aria-hidden="true" />
             <ol className="space-y-10">
               {timelineEvents.map((event, i) => (
                 <li key={i} className={`relative flex gap-6 md:gap-0 ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}>
                   <div className={`flex-1 pb-2 ${i % 2 === 0 ? "md:text-right md:pr-14 pl-14 md:pl-0" : "md:text-left md:pl-14 pl-14"}`}>
-                    <span className="text-[#9A7B2F] text-[12px] tracking-widest uppercase font-medium">{event.year}</span>
-                    <p className="text-[#1B2A4A]/70 leading-relaxed mt-1 text-[14px]">{event.label}</p>
+                    <span className="text-gold text-[12px] tracking-widest uppercase font-medium">{event.year}</span>
+                    <p className="text-navy/70 leading-relaxed mt-1 text-[14px]">{event.label}</p>
                   </div>
-                  <div className="absolute left-[18px] md:left-1/2 top-1 md:-translate-x-1/2 w-4 h-4 rounded-full bg-[#9A7B2F] border-2 border-white shadow-sm z-10" />
+                  <div className="absolute left-[18px] md:left-1/2 top-1 md:-translate-x-1/2 w-4 h-4 rounded-full bg-gold border-2 border-white shadow-sm z-10" />
                   <div className="hidden md:block flex-1" />
                 </li>
               ))}
@@ -92,11 +95,11 @@ export default function AboutPage() {
       </section>
 
       {/* Our approach */}
-      <section className="bg-white border-t border-[#E5E7EB]">
+      <section className="bg-white border-t border-line">
         <div className="mx-auto max-w-6xl px-6 py-16">
           <div className="text-center mb-12">
-            <p className="text-[#9A7B2F] text-[12px] tracking-[0.2em] uppercase font-medium mb-2">How we work</p>
-            <h2 className="text-[32px] text-[#1B2A4A] font-bold">Our approach</h2>
+            <p className="text-gold text-[12px] tracking-[0.2em] uppercase font-medium mb-2">How we work</p>
+            <h2 className="text-[32px] text-navy font-bold">Our approach</h2>
           </div>
 
           <div className="grid gap-6 md:grid-cols-3">
@@ -105,35 +108,25 @@ export default function AboutPage() {
                 icon: <AccountabilityIcon />,
                 title: "Accountability",
                 body: "We take ownership of every property we manage. Clients receive accurate records, timely payments, and honest reporting — always.",
-                image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=80&auto=format&fit=crop",
-                imageAlt: "Financial accountability and reporting",
               },
               {
                 icon: <TransparencyIcon />,
                 title: "Transparency",
                 body: "No hidden fees, no surprises. We communicate clearly with both property owners and tenants throughout every engagement.",
-                image: "https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?w=600&q=80&auto=format&fit=crop",
-                imageAlt: "Open and transparent teamwork",
               },
               {
                 icon: <ExcellenceIcon />,
                 title: "Excellence",
                 body: "We hold ourselves to professional standards in every interaction — from the first enquiry to the annual lease renewal.",
-                image: "https://images.unsplash.com/photo-1560185007-c5ca9d2c014d?w=600&q=80&auto=format&fit=crop",
-                imageAlt: "Excellent property management",
               },
             ].map((pillar) => (
-              <div key={pillar.title} className="border border-[#E5E7EB] overflow-hidden">
-                <div className="relative overflow-hidden" style={{ height: 160 }}>
-                  <Image src={pillar.image} alt={pillar.imageAlt} fill className="object-cover" sizes="33vw" />
-                  <div className="absolute inset-0 bg-[#1B2A4A]/50" />
-                  <div className="absolute inset-0 flex items-center justify-center text-white">
-                    {pillar.icon}
-                  </div>
+              <div key={pillar.title} className="border border-line overflow-hidden">
+                <div className="bg-navy flex items-center justify-center py-8">
+                  {pillar.icon}
                 </div>
                 <div className="p-6 text-center">
-                  <h3 className="font-semibold text-[#1B2A4A] text-[17px] mb-3">{pillar.title}</h3>
-                  <p className="text-[#1B2A4A]/60 text-[13px] leading-relaxed">{pillar.body}</p>
+                  <h3 className="font-semibold text-navy text-[17px] mb-3">{pillar.title}</h3>
+                  <p className="text-navy/60 text-[13px] leading-relaxed">{pillar.body}</p>
                 </div>
               </div>
             ))}
@@ -142,26 +135,18 @@ export default function AboutPage() {
       </section>
 
       {/* Associations */}
-      <section className="bg-[#F8F8F6] border-t border-[#E5E7EB]">
-        <div className="mx-auto max-w-6xl px-6 py-16 grid gap-12 md:grid-cols-2 items-center">
-          <div className="relative overflow-hidden" style={{ height: 280 }}>
-            <Image
-              src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80&auto=format&fit=crop"
-              alt="Professional accounting and property management partnership"
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
-          </div>
-          <div>
-            <p className="text-[#9A7B2F] text-[12px] tracking-[0.2em] uppercase font-medium mb-3">Partners & associations</p>
-            <h2 className="text-[28px] text-[#1B2A4A] font-bold mb-5 leading-tight">
+      <section className="bg-[#F8F8F6] border-t border-line">
+        <div className="mx-auto max-w-6xl px-6 py-16">
+          {/* Text-only — the stock "partnership" photo was removed */}
+          <div className="max-w-2xl">
+            <p className="text-gold text-[12px] tracking-[0.2em] uppercase font-medium mb-3">Partners & associations</p>
+            <h2 className="text-[28px] text-navy font-bold mb-5 leading-tight">
               Backed by professional expertise
             </h2>
-            <div className="space-y-4 text-[#1B2A4A]/65 leading-relaxed text-[14px]">
+            <div className="space-y-4 text-navy/65 leading-relaxed text-[14px]">
               <p>
                 Erga Properties is associated with{" "}
-                <span className="text-[#9A7B2F] font-medium">Sikatrix Business Accountants</span>, ensuring that
+                <span className="text-gold font-medium">Sikatrix Business Accountants</span>, ensuring that
                 accounting and tax compliance is embedded in all property management operations.
               </p>
               <p>
@@ -169,7 +154,7 @@ export default function AboutPage() {
                 standards — with SARS-compliant reporting, proper reconciliations, and audit-ready records from day one.
               </p>
               <p>
-                Erga also partners with <span className="text-[#9A7B2F] font-medium">HeroPlumbers</span> for
+                Erga also partners with <span className="text-gold font-medium">HeroPlumbers</span> for
                 reliable, cost-effective plumbing maintenance across all managed properties.
               </p>
             </div>

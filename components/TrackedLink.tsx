@@ -4,7 +4,7 @@ import type { ReactNode, MouseEventHandler } from "react";
 import Link from "next/link";
 import { trackEvent } from "@/lib/analytics";
 
-export type TrackedEvent = "click_call" | "click_whatsapp" | "click_book";
+export type TrackedEvent = "click_call" | "click_whatsapp" | "click_book" | "click_email";
 
 /* Anchor (or Link for internal hrefs) that fires a GA4 event on click.
    The event is best-effort and guarded inside trackEvent. */
